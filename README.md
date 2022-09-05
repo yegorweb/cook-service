@@ -1,35 +1,35 @@
-# cook-service
+# **COOK Service** &nbsp;&nbsp;~~(♂Cock service♂)~~
 
-This template should help get you started developing with Vue 3 in Vite.
+[__Figma design__](https://www.figma.com/file/zvR5GICKaE0W9D6XG31FrF/%D0%94%D0%B5%D1%81%D0%BA%D1%82%D0%BE%D0%BF?node-id=0%3A1)
 
-## Recommended IDE Setup
+## Состояние проекта:&nbsp; :x: Не сделан &nbsp;&nbsp;![5%](https://progress-bar.dev/5)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Этапы проекта:
+- [X] Инициализировать проект
+- [ ] Сделать шапку
+    - [ ] Сделать меню 
+- [ ] Сделать секцию с баннерами
+- [ ] Сделать панель выбора категории
+- [ ] Сделать компонент блюда
+    - [ ] Сделать компонент полной страницы блюда
+- [ ] Сделать подвал
+- [ ] Сделать страницы пользовательского соглашения и политики конфиденциальности
+- [ ] Сделать подтверждение номера телефона
+- [ ] Сделать пункт "Мои заказы"
+    - [ ] Сделать компонент заказа и его полную страницу
+- [ ] Сделать страницу с депозитом
+- [ ] Сделать страницу с привязанными картами
+    - [ ] Сделать компонент карты и полную страницу
+- [ ] Сделать пункт "Мои адреса"
+- [ ] Сделать пункт "Мои данные"
+- [ ] Сделать пункт "Корзина"
+- [ ] Сделать страницу оформления заказа
+- [ ] Сделать адаптив
+- [ ] Настроить сервер
+- [ ] Настроить базу данных
+- [ ] Посадить на CMS
 
-## Customize configuration
+----------
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-yarn
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-yarn dev
-```
-
-### Compile and Minify for Production
-
-```sh
-yarn build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-yarn lint
-```
+## Application and design author:
+Made with :heart: by Егор Князев (Yegor Knyazev)
