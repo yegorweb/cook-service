@@ -1,0 +1,85 @@
+@use "sass:math";
+@use "sass:list";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+@function rem($n) {
+    @return ($n / $base-font) * 1rem;
+}
+
+$base-font: 16;
+
+$desktop: rem(1200);
+$tablet: rem(992);
+$mobile: rem(768);
+$mini-mobile: rem(576);
+
+$container-desktop: rem(1140);
+$container-tablet: rem(960);
+$container-mobile: rem(720);
+$container-mini-mobile: rem(540);
+
+@mixin adaptive-container-width() {
+    @media screen and (min-width: $desktop) { width: $container-desktop; }
+    @media screen and (min-width: $tablet) and (max-width: $desktop) { width: $container-tablet; }
+    @media screen and (min-width: $mobile) and (max-width: $tablet) { width: $container-mobile }
+    @media screen and (min-width: $mini-mobile) and (max-width: $mobile) { width: $container-mini-mobile; }
+    @media screen and (max-width: $mini-mobile) { width: 320px; }
+}
+@mixin adaptive-display($display, $min, $max) {
+    @if ($max == "none") {
+        @media screen and (min-width: $min) {
+            display: $display;
+        }
+    } @else {
+        @media screen and (min-width: $min) and (max-width: $max) {
+            display: $display;
+        }
+    }
+}
+@mixin adaptive-value-h($property, $value, $min, $max) {
+    @if ($max == 0) {
+        @media screen and (min-width: $min) {
+            #{$property}: $value;
+        }
+    } @else {
+        @media screen and (min-width: $min) and (max-width: $max) {
+            #{$property}: $value;
+        }
+    }
+}
+@mixin adaptive-value($property, $value-d, $value-t, $value-m, $value-sm, $value-esm) {
+    @media screen and (min-width: $desktop) {
+        #{$property}: $value-d;
+    }
+
+    @media screen and (min-width: $tablet) and (max-width: $desktop) {
+        #{$property}: $value-t;
+    }
+
+    @media screen and (min-width: $mobile) and (max-width: $tablet) {
+        #{$property}: $value-m;
+    }
+
+    @media screen and (min-width: $mini-mobile) and (max-width: $mobile) {
+        #{$property}: $value-sm;
+    }
+
+    @media screen and (max-width: $mini-mobile) {
+        #{$property}: $value-esm;
+    }
+}
+
+// Main
+body, html {
+    margin: 0;
+    padding: 0;
+}
+* {
+    font-family: 'Roboto';
+}
+.container {
+    margin: 0 auto;
+    @include adaptive-container-width();
+}
+// /Main
+
