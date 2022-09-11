@@ -65,6 +65,7 @@
     border-radius: 9999px;
     background: #25D366;
     text-decoration: none;
+    @include adaptive-value(display, flex, flex, flex, none, none);
     
     &-img {
         height: rem(20);
@@ -88,6 +89,7 @@
     font-size: rem(18);
     color: #212629;
     border: none;
+    @include adaptive-value(display, block, block, block, none, none);
 }
 .account {
     height: rem(40);

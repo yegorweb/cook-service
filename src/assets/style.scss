@@ -23,7 +23,7 @@ $container-mini-mobile: rem(540);
     @media screen and (min-width: $tablet) and (max-width: $desktop) { width: $container-tablet; }
     @media screen and (min-width: $mobile) and (max-width: $tablet) { width: $container-mobile }
     @media screen and (min-width: $mini-mobile) and (max-width: $mobile) { width: $container-mini-mobile; }
-    @media screen and (max-width: $mini-mobile) { width: 320px; }
+    @media screen and (max-width: $mini-mobile) { width: rem(320); }
 }
 @mixin adaptive-display($display, $min, $max) {
     @if ($max == "none") {
