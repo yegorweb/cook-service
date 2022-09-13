@@ -1,6 +1,6 @@
 <template>
     <CatalogButtons v-bind:categories="categories" />
-    <CatalogItems v-bind:items="items" />
+    <CatalogItems v-bind:items="items" v-if="currentMode=='Частным клиентам'" />
 </template>
 
 <script setup>
