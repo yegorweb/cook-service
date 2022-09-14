@@ -16,6 +16,10 @@ var items = ref(props.items)
 
 <style lang="scss" scoped>
 @import '@/assets/style.scss';
-
-
+.items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: rem(60);
+    column-gap: rem(30);
+}
 </style>
