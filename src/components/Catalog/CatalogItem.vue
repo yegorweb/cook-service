@@ -1,6 +1,6 @@
 <template>
     <div class="item">
-        <div class="top">
+        <div class="top" :style="'background: #ac662d url('+img+') 50% 50% no-repeat;'">
             <div class="cont">
                 <div class="like"></div>
                 <div class="peculiarities">
@@ -19,11 +19,11 @@
         </div>
         <div class="bottom cont">
             <div class="btn">
-                <div @click="item.amount-=1" class="btn-minus">-</div>
+                <div @click="item.amount>1 ? item.amount-=1 : item.amount+0" class="btn-minus">-</div>
                 <div class="btn-count">{{item.amount}}</div>
                 <div @click="item.amount+=1" class="btn-plus">+</div>
             </div>
-            <a class="add">Добавить</a>
+            <a class="add"><div>Добавить</div></a>
         </div>
     </div>
 </template>
@@ -34,10 +34,6 @@ import { onMounted, ref } from "vue"
 var props = defineProps(['item'])
 var item = props.item
 var img = item.imageSource
-
-onMounted(() => {
-    document.querySelector('.top').style.setProperty('--bg-img', 'url("'+img+'")')
-})
 </script>
 
 <style lang="scss" scoped>
@@ -54,7 +50,6 @@ onMounted(() => {
 }
 .top {
     aspect-ratio: 370 / 360;
-    background: #ac662d var(--bg-img) 50% 50%;
     background-size: cover;
 }
 .middle {
@@ -98,7 +93,6 @@ onMounted(() => {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     gap: rem(10);
     margin-bottom: rem(20);
 }
@@ -109,7 +103,7 @@ onMounted(() => {
     gap: rem(2);
     align-items: center;
     border: 1px solid #FFFFFF;
-    padding: rem(2) rem(11);
+    padding: rem(1) rem(11);
 
     & > * {
         font-family: 'Gilroy';
@@ -139,13 +133,18 @@ onMounted(() => {
     width: 100%;
     text-align: center;
     cursor: pointer;
-    font-family: 'Gilroy';
-    font-style: normal;
-    font-weight: 700;
-    font-size: rem(18);
-    color: #FE9102;
     transition: all .2s;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 
+    & > * {
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-weight: 700;
+        font-size: rem(18);
+        color: #FE9102;
+    }
     &:hover {
         box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.08), 1px 1px 6px rgba(255, 255, 255, 0.5), 5px 5px 20px #FFFFFF, -5px -5px 20px #D3D3D3;
     }

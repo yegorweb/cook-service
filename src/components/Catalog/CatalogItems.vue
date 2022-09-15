@@ -18,7 +18,7 @@ var items = ref(props.items)
 @import '@/assets/style.scss';
 .items {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    @include adaptive-value(grid-template-columns, 1fr 1fr 1fr, 1fr 1fr 1fr, 1fr 1fr, 1fr, 1fr);
     margin-top: rem(60);
     column-gap: rem(30);
 }
