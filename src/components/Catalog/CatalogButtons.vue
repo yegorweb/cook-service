@@ -1,8 +1,8 @@
 <template>
     <div class="btns container">
         <div class="btns-top">
-            <a class="btns-top-item btns-top-item-active">Частным клиентам</a>
-            <a class="btns-top-item">Корпоративные заказы</a>
+            <a class="btns-top-item btns-top-item-active" @click="$emit('changeMode', 'Частным клиентам')">Частным клиентам</a>
+            <a class="btns-top-item" @click="$emit('changeMode', 'Корпоративные заказы')">Корпоративные заказы</a>
         </div>
         <div class="btns-bottom">
             <template v-for="category in categories" :key="category">

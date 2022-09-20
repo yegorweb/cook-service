@@ -1,10 +1,12 @@
 <template>
     <div class="item">
-        <div class="top" :style="'background: #ac662d url('+img+') 50% 50% no-repeat;'">
-            <div class="cont">
-                <div class="like"></div>
+        <div class="top" :style="'background: #ac662d url('+img+') center center no-repeat;'">
+            <div class="cont top-container">
+                <img src="@/assets/like.svg" class="like">
                 <div class="peculiarities">
-                    <div v-for="peculiaritie in item.peculiarities" :key="peculiaritie" class="peculiarities-item"></div>
+                    <div v-for="peculiaritie in item.peculiarities" :key="peculiaritie" class="peculiarities-item hint--bottom-right" :aria-label="peculiaritie.name">
+                        <img :src="peculiaritie.imageSource" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,6 +40,7 @@ var img = item.imageSource
 
 <style lang="scss" scoped>
 @import '@/assets/style.scss';
+@import '@/assets/hint.css';
 .item {
     width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -50,7 +53,14 @@ var img = item.imageSource
 }
 .top {
     aspect-ratio: 370 / 360;
+    display: flex;
+    align-items: center;
     background-size: cover;
+    position: relative;
+}
+.top-container {
+    margin: auto;
+    height: 90%;
 }
 .middle {
     margin-top: rem(20);
@@ -147,6 +157,35 @@ var img = item.imageSource
     }
     &:hover {
         box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.08), 1px 1px 6px rgba(255, 255, 255, 0.5), 5px 5px 20px #FFFFFF, -5px -5px 20px #D3D3D3;
+    }
+}
+.like {
+    height: rem(20);
+    cursor: pointer;
+    margin: rem(-6) 0 0 rem(-6);
+    padding: rem(6);
+    box-sizing: content-box;
+}
+.peculiarities {
+    display: flex;
+    flex-direction: row;
+    gap: rem(8);
+    position: absolute;
+    bottom: rem(-10);
+
+    &-item {
+        background: #FFFFFF;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+        border-radius: 999px;
+        width: rem(40);
+        height: rem(40);
+        padding: rem(10);
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        & > * {
+            height: 100%;
+        }
     }
 }
 </style>
