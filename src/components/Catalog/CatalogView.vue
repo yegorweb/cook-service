@@ -1,19 +1,19 @@
 <template>
     <CatalogButtons v-bind:categories="categories" v-on:changeMode="changeMode" />
-    <CatalogItems v-bind:items="items" v-if="currentMode=='Частным клиентам'" />
-    <div v-else>Else</div>
+    <CatalogItems v-bind:items="items" v-if="currentMode.mode=='Частным клиентам'" />
+    <CatalogCorporate v-else />
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import CatalogButtons from "./CatalogButtons.vue";
 import CatalogItems from "./CatalogItems.vue";
+import CatalogCorporate from "./CatalogCorporate.vue";
 
 var categories = ref(['Все', 'Любимое', 'Закуски', 'Салаты', 'Горячее', 'Суши и роллы', 'Супы', 'Детское', 'Десерты', 'Напитки'])
-var currentMode = ref('Частным клиентам')
+var currentMode = reactive({mode: 'Частным клиентам'})
 function changeMode(mode) {
-    currentMode = mode
-    console.log(currentMode)
+    currentMode.mode = mode
 }
 var items = ref([{
     like: false,
