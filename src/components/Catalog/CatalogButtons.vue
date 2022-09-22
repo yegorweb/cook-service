@@ -6,7 +6,7 @@
         </div>
         <div class="btns-bottom">
             <template v-for="category in categories" :key="category">
-                <a class="btns-bottom-item">
+                <a class="btns-bottom-item" @click="$emit('changeCategory', category)">
                     {{category}}
                 </a>
             </template>

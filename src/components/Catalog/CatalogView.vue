@@ -1,6 +1,6 @@
 <template>
-    <CatalogButtons v-bind:categories="categories" v-on:changeMode="changeMode" />
-    <CatalogItems v-bind:items="items" v-if="currentMode.mode=='Частным клиентам'" />
+    <CatalogButtons v-bind:categories="categories" v-on:changeMode="changeMode" v-on:changeCategory="changeCategory" />
+    <CatalogItems v-bind:items="items" v-bind:currentCategory="currentCategory" v-if="currentMode.mode=='Частным клиентам'" />
     <CatalogCorporate v-else />
 </template>
 
@@ -12,12 +12,17 @@ import CatalogCorporate from "./CatalogCorporate.vue";
 
 var categories = ref(['Все', 'Любимое', 'Закуски', 'Салаты', 'Горячее', 'Суши и роллы', 'Супы', 'Детское', 'Десерты', 'Напитки'])
 var currentMode = reactive({mode: 'Частным клиентам'})
+var currentCategory = reactive({category: 'Все'})
 function changeMode(mode) {
     currentMode.mode = mode
 }
+function changeCategory(category) {
+    currentCategory.category = category
+    console.log(currentCategory.category)
+}
 var items = ref([{
     like: false,
-    category: '',
+    category: 'Закуски',
     imageSource: 'src/assets/item-image.jpg',
     peculiarities: [{
         name: 'Острый',
@@ -38,7 +43,7 @@ var items = ref([{
 },
 {
     like: false,
-    category: '',
+    category: 'Салаты',
     imageSource: 'src/assets/item-image2.jpg',
     peculiarities: [{
         name: 'Острый',
@@ -55,7 +60,7 @@ var items = ref([{
 },
 {
     like: false,
-    category: '',
+    category: 'Детское',
     imageSource: 'src/assets/item-image3.jpg',
     peculiarities: [{
         name: 'Острый',
