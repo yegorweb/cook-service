@@ -31,5 +31,5 @@
 
 ----------
 
-## Application and design author:
+## Application author:
 Made with :heart: by Егор Князев (Yegor Knyazev)
