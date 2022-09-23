@@ -1,12 +1,24 @@
 <template>
     <div class="btns container">
         <div class="btns-top">
-            <a class="btns-top-item btns-top-item-active" @click="$emit('changeMode', 'Частным клиентам')">Частным клиентам</a>
-            <a class="btns-top-item" @click="$emit('changeMode', 'Корпоративные заказы')">Корпоративные заказы</a>
+            <a class="btns-top-item btns-top-item-active" 
+                    @click="$emit('changeMode', 'Частным клиентам')"
+                    :class="{
+                        'btns-top-item-not-selected': props.currentMode.mode != 'Частным клиентам',
+                        'btns-top-item-selected': props.currentMode.mode == 'Частным клиентам'
+                    }"
+            >Частным клиентам</a>
+            <a class="btns-top-item" 
+                    @click="$emit('changeMode', 'Корпоративные заказы')"
+                    :class="{
+                        'btns-top-item-not-selected': props.currentMode.mode != 'Корпоративные заказы',
+                        'btns-top-item-selected': props.currentMode.mode == 'Корпоративные заказы'
+                    }"
+            >Корпоративные заказы</a>
         </div>
         <div class="btns-bottom">
             <template v-for="category in categories" :key="category">
-                <a class="btns-bottom-item" @click="$emit('changeCategory', category)">
+                <a class="btns-bottom-item" @click="$emit('changeCategory', category)" :class="{'btns-bottom-item-selected': props.currentCategory.category==category, 'btns-bottom-item-not-selected': props.currentCategory.category!=category}">
                     {{category}}
                 </a>
             </template>
@@ -17,7 +29,7 @@
 <script setup>
 import { ref } from "vue"
 
-var props = defineProps(['categories'])
+var props = defineProps(['categories', 'currentCategory', 'currentMode'])
 var categories = ref(props.categories)
 </script>
 
@@ -38,15 +50,14 @@ var categories = ref(props.categories)
             font-style: normal;
             font-weight: 700;
             font-size: rem(26);
-            color: rgba(33, 38, 41, 0.5);
             cursor: pointer;
             transition: all .15s;
 
-            &:hover {
+            &:hover, &-selected {
                 color: #212629;
             } 
-            &-active {
-                color: #212629;
+            &-not-selected {
+                color: rgba(33, 38, 41, 0.5);
             }
         }
     }
@@ -59,18 +70,17 @@ var categories = ref(props.categories)
         row-gap: rem(10);
 
         &-item {
-            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.08), -1px -1px 6px rgba(255, 255, 255, 0.5), -5px -5px 20px #FFFFFF, 5px 5px 20px #D3D3D3;
             background: #E9E9E9;
             border-radius: 999px;
             padding: rem(10) rem(20);
             cursor: pointer;
             transition: all .2s;
 
-            &:hover {
-                box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.08), 1px 1px 6px rgba(255, 255, 255, 0.5), 5px 5px 20px #FFFFFF, -5px -5px 20px #D3D3D3;                
+            &-not-selected {
+                box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.08), -1px -1px 6px rgba(255, 255, 255, 0.5), -5px -5px 20px #FFFFFF, 5px 5px 20px #D3D3D3;
             }
-            &-active {
-                box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.08), 1px 1px 6px rgba(255, 255, 255, 0.5), 5px 5px 20px #FFFFFF, -5px -5px 20px #D3D3D3;                
+            &-selected, &:hover {
+                box-shadow: -1px -1px 6px rgba(0, 0, 0, 0.12), 1px 1px 6px rgba(255, 255, 255, 0.5), 5px 5px 20px #FFFFFF, -5px -5px 20px #D3D3D3;
             }
         }
     }

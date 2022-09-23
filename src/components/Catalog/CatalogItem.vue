@@ -1,6 +1,6 @@
 <template>
     <div class="item">
-        <div class="top" :style="'background: #ac662d url('+img+') center center no-repeat;'">
+        <div class="top" :style="'background: #ac662d url('+img+') 50% 50% no-repeat;'">
             <div class="cont top-container">
                 <div class="like" @click="item.like=!item.like">
                     <svg v-if="item.like" class="like" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,10 +60,10 @@ var img = item.imageSource
     width: 90%;
 }
 .top {
-    aspect-ratio: 370 / 360;
+    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
-    background-size: cover;
+    background-size: cover !important;
     position: relative;
     user-select: none;
 }

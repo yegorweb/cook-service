@@ -1,5 +1,11 @@
 <template>
-    <CatalogButtons v-bind:categories="categories" v-on:changeMode="changeMode" v-on:changeCategory="changeCategory" />
+    <CatalogButtons 
+        v-bind:categories="categories" 
+        v-bind:currentCategory="currentCategory" 
+        v-bind:currentMode="currentMode"
+        v-on:changeMode="changeMode" 
+        v-on:changeCategory="changeCategory" 
+    />
     <CatalogItems v-bind:items="items" v-bind:currentCategory="currentCategory" v-if="currentMode.mode=='Частным клиентам'" />
     <CatalogCorporate v-else />
 </template>
@@ -18,7 +24,6 @@ function changeMode(mode) {
 }
 function changeCategory(category) {
     currentCategory.category = category
-    console.log(currentCategory.category)
 }
 var items = ref([{
     like: false,
