@@ -43,6 +43,21 @@ var items = ref([{
         calories: '1 040 ккал',
         price: '430₽'
     },
+    additions: [{
+        name: 'Побольше лука',
+        price: 20,
+        selected: false
+    },
+    {
+        name: 'По домашнему',
+        price: 0,
+        selected: true
+    },
+    {
+        name: 'Грибов побольше',
+        price: 300,
+        selected: false
+    }],
     description: 'Это вкусное и сытное блюдо является любимым блюдом во многих семьях, полюбите его и вы.',
     amount: 1
 },
@@ -60,6 +75,21 @@ var items = ref([{
         calories: '1 040 ккал',
         price: '430₽'
     },
+    additions: [{
+        name: 'Побольше лука',
+        price: 20,
+        selected: false
+    },
+    {
+        name: 'По домашнему',
+        price: 0,
+        selected: true
+    },
+    {
+        name: 'Грибов побольше',
+        price: 300,
+        selected: false
+    }],
     description: 'Это вкусное и сытное блюдо является любимым блюдом во многих семьях, полюбите его и вы.',
     amount: 1
 },
@@ -77,6 +107,21 @@ var items = ref([{
         calories: '1 040 ккал',
         price: '430₽'
     },
+    additions: [{
+        name: 'Побольше лука',
+        price: 20,
+        selected: false
+    },
+    {
+        name: 'По домашнему',
+        price: 0,
+        selected: true
+    },
+    {
+        name: 'Грибов побольше',
+        price: 300,
+        selected: false
+    }],
     description: 'Это вкусное и сытное блюдо является любимым блюдом во многих семьях, полюбите его и вы.',
     amount: 1
 }])
