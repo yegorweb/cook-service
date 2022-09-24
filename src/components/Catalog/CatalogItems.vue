@@ -2,7 +2,7 @@
     <div class="items container">
         <template v-for="item in items" :key="item">
             <template v-if="props.currentCategory.category=='Все'||(props.currentCategory.category=='Любимое'&&item.like)||props.currentCategory.category==item.category">
-                <CatalogItem v-bind:item="item" />
+                <CatalogItem :item="item" />
             </template>
         </template>
         <div v-if="props.currentCategory.category != 'Все' &&

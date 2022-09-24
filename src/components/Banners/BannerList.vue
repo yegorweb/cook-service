@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <template v-for="item in this.props.list" :key="item">
-            <BannerMain v-if="item.type == 'main'" v-bind:item="item" />
+            <BannerMain v-if="item.type == 'main'" :item="item" />
             <!-- <BannerImg v-else v-bind:item="item" /> -->
         </template>
     </div>

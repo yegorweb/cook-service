@@ -17,6 +17,8 @@ import Footer from './components/Footer.vue';
 		margin: 0;
 		padding: 0;
 		background: #E5E5E5;
+	} body {
+		overflow: hidden;
 	}
 
 	@font-face {

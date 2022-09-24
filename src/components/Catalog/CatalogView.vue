@@ -1,13 +1,14 @@
 <template>
     <CatalogButtons 
-        v-bind:categories="categories" 
-        v-bind:currentCategory="currentCategory" 
-        v-bind:currentMode="currentMode"
-        v-on:changeMode="changeMode" 
-        v-on:changeCategory="changeCategory" 
+        :categories="categories" 
+        :currentCategory="currentCategory" 
+        :currentMode="currentMode"
+        @changeMode="changeMode" 
+        @changeCategory="changeCategory" 
     />
-    <CatalogItems v-bind:items="items" v-bind:currentCategory="currentCategory" v-if="currentMode.mode=='Частным клиентам'" />
+    <CatalogItems :items="items" :currentCategory="currentCategory" v-if="currentMode.mode=='Частным клиентам'" />
     <CatalogCorporate v-else />
+    <CatalogItemPage :item="items[0]" />
 </template>
 
 <script setup>
@@ -15,6 +16,7 @@ import { reactive, ref } from "vue";
 import CatalogButtons from "./CatalogButtons.vue";
 import CatalogItems from "./CatalogItems.vue";
 import CatalogCorporate from "./CatalogCorporate.vue";
+import CatalogItemPage from "./CatalogItemPage.vue";
 
 var categories = ref(['Все', 'Любимое', 'Закуски', 'Салаты', 'Горячее', 'Суши и роллы', 'Супы', 'Детское', 'Десерты', 'Напитки'])
 var currentMode = reactive({mode: 'Частным клиентам'})
@@ -44,7 +46,7 @@ var items = ref([{
         price: '430₽'
     },
     additions: [{
-        name: 'Побольше лука',
+        name: 'Побольше лука dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd',
         price: 20,
         selected: false
     },
