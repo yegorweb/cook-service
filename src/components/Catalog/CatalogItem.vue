@@ -33,7 +33,7 @@
                 <div class="btn-count">{{item.amount}}</div>
                 <div @click="item.amount+=1" class="btn-plus">+</div>
             </div>
-            <a class="add"><div>Добавить</div></a>
+            <a class="add" @click="$emit('openFullItem', item)"><div>Добавить</div></a>
         </div>
     </div>
 </template>

@@ -6,9 +6,18 @@
         @changeMode="changeMode" 
         @changeCategory="changeCategory" 
     />
-    <CatalogItems :items="items" :currentCategory="currentCategory" v-if="currentMode.mode=='Частным клиентам'" />
+    <CatalogItems 
+        v-on:openFullItem="openFullItem" 
+        :items="items" 
+        :currentCategory="currentCategory" 
+        v-if="currentMode.mode=='Частным клиентам'" 
+    />
     <CatalogCorporate v-else />
-    <CatalogItemPage :item="items[0]" />
+    <CatalogItemPage 
+        v-on:closeFullItem="closeFullItem" 
+        v-if="currentFullItem.active" 
+        :item="currentFullItem.item" 
+    />
 </template>
 
 <script setup>
@@ -18,15 +27,6 @@ import CatalogItems from "./CatalogItems.vue";
 import CatalogCorporate from "./CatalogCorporate.vue";
 import CatalogItemPage from "./CatalogItemPage.vue";
 
-var categories = ref(['Все', 'Любимое', 'Закуски', 'Салаты', 'Горячее', 'Суши и роллы', 'Супы', 'Детское', 'Десерты', 'Напитки'])
-var currentMode = reactive({mode: 'Частным клиентам'})
-var currentCategory = reactive({category: 'Все'})
-function changeMode(mode) {
-    currentMode.mode = mode
-}
-function changeCategory(category) {
-    currentCategory.category = category
-}
 var items = ref([{
     like: false,
     category: 'Закуски',
@@ -127,4 +127,25 @@ var items = ref([{
     description: 'Это вкусное и сытное блюдо является любимым блюдом во многих семьях, полюбите его и вы.',
     amount: 1
 }])
+
+var categories = ref(['Все', 'Любимое', 'Закуски', 'Салаты', 'Горячее', 'Суши и роллы', 'Супы', 'Детское', 'Десерты', 'Напитки'])
+var currentMode = reactive({mode: 'Частным клиентам'})
+var currentFullItem = reactive({active: false, item: {}})
+var currentCategory = reactive({category: 'Все'})
+
+function changeMode(mode) {
+    currentMode.mode = mode
+}
+function changeCategory(category) {
+    currentCategory.category = category
+}
+function openFullItem(item) {
+    currentFullItem.active = true
+    currentFullItem.item = item
+    document.body.style['overflow-y'] = 'hidden'
+}
+function closeFullItem() {
+    currentFullItem.active = false
+    document.body.style['overflow-y'] = 'scroll'
+}
 </script>
