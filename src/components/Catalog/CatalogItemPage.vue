@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <div class="box2">
+        <!-- <div class="box2"> -->
         <div class="item">
             <div class="top" :style="'background: #ac662d url('+item.imageSource+') 50% 50% no-repeat;'">
                 <div class="cont top-container">
@@ -28,15 +28,18 @@
                 <div class="info">
                     <div>{{item.info.weight}}</div>
                     <div>{{item.info.calories}}</div>
-                    <div class="price">{{item.info.price}}</div>
+                    <div class="price">{{item.info.price}}₽</div>
                 </div>
                 <div class="desc">{{item.description}}</div>
                 <div class="additions">
-                    <div class="additions-item" v-for="addition in item.additions" :key="addition">
-                        <div class="additions-item-name">{{addition.name}}</div>
-                        <div class="additions-item-right">
-                            <div class="additions-item-price">{{(addition.price==0?'':'+ ')+ addition.price + '₽'}}</div>
-                            <input class="additions-item-checkbox" type="checkbox" :disabled="addition.price==0" v-model="addition.selected">
+                    <div class="additions-title">Дополнительно:</div>
+                    <div class="additions-items">
+                        <div class="additions-item" v-for="addition in item.additions" :key="addition">
+                            <div class="additions-item-name">{{addition.name}}</div>
+                            <div class="additions-item-right">
+                                <div class="additions-item-price">{{(addition.price==0?'':'+ ')+ addition.price + '₽'}}</div>
+                                <input class="additions-item-checkbox" type="checkbox" :disabled="addition.price==0" v-model="addition.selected">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -47,10 +50,10 @@
                     <div class="btn-count">{{item.amount}}</div>
                     <div @click="item.amount+=1" class="btn-plus">+</div>
                 </div>
-                <a class="add"><div>Добавить</div></a>
+                <a class="add"><div>Добавить {{item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])}}₽</div></a>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
     </div>
 </template>
 
@@ -63,38 +66,37 @@ var item = props.item
 @import '@/assets/style.scss';
 @import '@/assets/hint.css';
 .box {
-    position: fixed;
+    position: absolute;
+    isolation: isolate;
     top: 0;
     left: 0;
     right: 0;
     width: 100vw;
-    height: 200vh;
     backdrop-filter: blur(20px);
     z-index: 9999999;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 }
 .box2 {
     position: absolute;
     display: flex;
     justify-content: center;
-    overflow: scroll;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     width: 100vw;
     height: 200vh;
+    overflow: visible;
 }
 .item {
     @include adaptive-value(width, rem(500), rem(500), rem(500), rem(500), rem(500));
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: rem(40) rem(40) rem(40) rem(5);
     background: #E5E5E5;
-    overflow: hidden;
     margin-top: rem(50);
-    //overflow-y: scroll;
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    overflow: hidden;
 }
 .cont {
     margin: 0 auto;
@@ -257,9 +259,25 @@ var item = props.item
 .additions {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: rem(10);
+    justify-content: flex-start;
+    gap: rem(20);
+    margin-top: rem(26);
+    width: 100%;
 
+    &-items {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: rem(10);
+        width: 100%;
+    }
+    &-title {
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-weight: 700;
+        font-size: rem(18);
+        color: #212629;
+    }
     &-item {
         padding: rem(16) rem(20);
         max-width: 100%;
@@ -267,23 +285,57 @@ var item = props.item
         flex-direction: row;
         justify-content: space-between;
         gap: rem(30);
+        overflow: hidden;
         align-items: flex-start;
         border-radius: rem(30) rem(30) rem(30) rem(3);
         background: rgba(0, 0, 0, 0.10);
 
         &-name {
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 300;
+            font-size: rem(18);
+            color: #000000;
+            word-wrap: break-word;
+            text-overflow: clip;
+            overflow: hidden;
         }
         &-right {
             display: flex;
             flex-direction: row;
             gap: rem(10);
             align-items: center;
+            position: relative;
         }
         &-price {
-
+            white-space: nowrap;
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 300;
+            font-size: rem(18);
         }
         &-checkbox {
+            width: rem(22);
+            height: rem(22);
+            background: #C9C9C9;
+            border: rem(1) solid rgba(0, 0, 0, 0.2);
+            background-size: cover;
+            padding: rem(8);
+            box-sizing: border-box;
+            background-repeat: no-repeat;
+            border-radius: 999px;
+            cursor: pointer;
+            appearance: none;
+            transition: all .15s;
 
+            &:checked {
+                border-color: #FE9102;
+                background-color: #FE9102;
+                background: #FE9102 url('@/assets/checked.svg') 50% 50% no-repeat;
+            }
+            &:not(:disabled):not(:checked):hover {
+                background-color: #c0c0c0;
+            }
         }
     }
 }

@@ -20,6 +20,10 @@ import Footer from './components/Footer.vue';
 		overflow-x: hidden;
 	}
 
+	.overflow-disable {
+		overflow-y: hidden !important;
+	}
+
 	@font-face {
 		font-family: 'Gilroy';
 		src: url('@/assets/fonts/Gilroy-Regular.eot');

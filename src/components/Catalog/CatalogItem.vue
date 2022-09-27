@@ -23,7 +23,7 @@
             <div class="info">
                 <div>{{item.info.weight}}</div>
                 <div>{{item.info.calories}}</div>
-                <div class="price">{{item.info.price}}</div>
+                <div class="price">{{item.info.price}}₽</div>
             </div>
             <div class="desc">{{item.description}}</div>
         </div>

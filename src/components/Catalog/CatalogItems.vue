@@ -29,6 +29,7 @@ var items = ref(props.items)
     @include adaptive-value(grid-template-columns, 1fr 1fr 1fr, 1fr 1fr 1fr, 1fr 1fr, 1fr, 1fr);
     margin-top: rem(60);
     column-gap: rem(30);
+    row-gap: rem(30);
     position: relative;
 }
 .no {

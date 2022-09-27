@@ -43,10 +43,10 @@ var items = ref([{
     info: {
         weight: '320 г',
         calories: '1 040 ккал',
-        price: '430₽'
+        price: 430
     },
     additions: [{
-        name: 'Побольше лука dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd',
+        name: 'Побольше лука',
         price: 20,
         selected: false
     },
@@ -75,7 +75,7 @@ var items = ref([{
     info: {
         weight: '320 г',
         calories: '1 040 ккал',
-        price: '430₽'
+        price: 430
     },
     additions: [{
         name: 'Побольше лука',
@@ -107,7 +107,7 @@ var items = ref([{
     info: {
         weight: '320 г',
         calories: '1 040 ккал',
-        price: '430₽'
+        price: 430
     },
     additions: [{
         name: 'Побольше лука',
@@ -142,10 +142,10 @@ function changeCategory(category) {
 function openFullItem(item) {
     currentFullItem.active = true
     currentFullItem.item = item
-    document.body.style['overflow-y'] = 'hidden'
+    document.querySelector('.box').style['height'] = document.querySelector('html').offsetHeight + 'px'
 }
 function closeFullItem() {
     currentFullItem.active = false
-    document.body.style['overflow-y'] = 'scroll'
+    document.querySelector('html').classList.remove('overflow-disable')
 }
 </script>
