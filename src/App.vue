@@ -18,6 +18,7 @@ import Footer from './components/Footer.vue';
 		padding: 0;
 		background: #E5E5E5;
 		overflow-x: hidden;
+		position: relative;
 	}
 
 	.overflow-disable {

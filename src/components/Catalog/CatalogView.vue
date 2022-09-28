@@ -142,7 +142,6 @@ function changeCategory(category) {
 function openFullItem(item) {
     currentFullItem.active = true
     currentFullItem.item = item
-    document.querySelector('.box').style['height'] = document.querySelector('html').offsetHeight + 'px'
 }
 function closeFullItem() {
     currentFullItem.active = false

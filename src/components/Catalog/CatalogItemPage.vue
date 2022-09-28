@@ -1,7 +1,6 @@
 <template>
     <div class="box">
-        <!-- <div class="box2"> -->
-        <div class="item">
+        <div class="item" :style="'margin-top:' + gap + 'px;'">
             <div class="top" :style="'background: #ac662d url('+item.imageSource+') 50% 50% no-repeat;'">
                 <div class="cont top-container">
                     <div class="top-topBar">
@@ -53,13 +52,15 @@
                 <a class="add"><div>Добавить {{item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])}}₽</div></a>
             </div>
         </div>
-    <!-- </div> -->
     </div>
 </template>
 
 <script setup>
+import { reactive } from "@vue/reactivity"
+
 var props = defineProps(['item'])
 var item = props.item
+var gap = document.documentElement.scrollTop + 50
 </script>
 
 <style lang="scss" scoped>
@@ -71,32 +72,21 @@ var item = props.item
     top: 0;
     left: 0;
     right: 0;
+    bottom: rem(-600);
     width: 100vw;
     backdrop-filter: blur(20px);
     z-index: 9999999;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-.box2 {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 200vh;
-    overflow: visible;
+    transition: all .15s;
+    overflow: hidden !important;
 }
 .item {
-    @include adaptive-value(width, rem(500), rem(500), rem(500), rem(500), rem(500));
+    @include adaptive-value(width, rem(500), rem(500), rem(500), rem(500), rem(320));
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: rem(40) rem(40) rem(40) rem(5);
     background: #E5E5E5;
-    margin-top: rem(50);
-    overflow: hidden;
+    margin-bottom: rem(50);
+    margin: 0 auto;
+    overflow: hidden !important;
 }
 .cont {
     margin: 0 auto;
