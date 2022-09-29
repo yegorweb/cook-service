@@ -1,31 +1,33 @@
 <template>
     <div class="item">
-        <div class="top" :style="'background: #ac662d url('+img+') 50% 50% no-repeat;'">
-            <div class="cont top-container">
-                <div class="like" @click="item.like=!item.like">
-                    <svg v-if="item.like" class="like" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.5 0.237305C2.5 0.237305 0 2.7373 0 5.7373C0 7.7373 1.5 9.7373 3.4 11.7373C5.3 13.7373 7.6 15.7373 9.4 17.5373C9.7 17.8373 10.2 17.8373 10.5 17.5373C12.3 15.7373 14.7 13.7373 16.5 11.7373C18.3 9.7373 19.9 7.8373 19.9 5.7373C19.9 2.7373 17.4 0.237305 14.4 0.237305C12.7 0.237305 11.1 1.1373 9.9 2.7373C8.8 1.1373 7.2 0.237305 5.5 0.237305ZM5.5 1.7373C7 1.7373 8.2 2.5373 9.4 4.4373C9.6 4.8373 10.1 4.9373 10.4 4.6373C10.5 4.5373 10.6 4.5373 10.6 4.4373C11.8 2.5373 13 1.7373 14.5 1.7373C16.7 1.7373 18.5 3.5373 18.5 5.7373C18.5 6.9373 17.3 8.7373 15.5 10.6373C13.9 12.3373 11.8 14.1373 10 15.9373C8.2 14.1373 6.2 12.3373 4.5 10.6373C2.7 8.7373 1.5 6.9373 1.5 5.7373C1.5 3.5373 3.3 1.7373 5.5 1.7373Z" fill="white"/>
-                        <path d="M5.5 1.7373C7 1.7373 8.2 2.5373 9.4 4.4373C9.6 4.8373 10.1 4.9373 10.4 4.6373C10.5 4.5373 10.6 4.5373 10.6 4.4373C11.8 2.5373 13 1.7373 14.5 1.7373C16.7 1.7373 18.5 3.5373 18.5 5.7373C18.5 6.9373 17.3 8.7373 15.5 10.6373C13.9 12.3373 11.8 14.1373 10 15.9373C8.2 14.1373 6.2 12.3373 4.5 10.6373C2.7 8.7373 1.5 6.9373 1.5 5.7373C1.5 3.5373 3.3 1.7373 5.5 1.7373Z" fill="#F03434"/>
-                    </svg>                        
-                    <svg v-else class="like" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.5 0.237305C2.5 0.237305 0 2.7373 0 5.7373C0 7.7373 1.5 9.7373 3.4 11.7373C5.3 13.7373 7.6 15.7373 9.4 17.5373C9.7 17.8373 10.2 17.8373 10.5 17.5373C12.3 15.7373 14.7 13.7373 16.5 11.7373C18.3 9.7373 19.9 7.8373 19.9 5.7373C19.9 2.7373 17.4 0.237305 14.4 0.237305C12.7 0.237305 11.1 1.1373 9.9 2.7373C8.8 1.1373 7.2 0.237305 5.5 0.237305ZM5.5 1.7373C7 1.7373 8.2 2.5373 9.4 4.4373C9.6 4.8373 10.1 4.9373 10.4 4.6373C10.5 4.5373 10.6 4.5373 10.6 4.4373C11.8 2.5373 13 1.7373 14.5 1.7373C16.7 1.7373 18.5 3.5373 18.5 5.7373C18.5 6.9373 17.3 8.7373 15.5 10.6373C13.9 12.3373 11.8 14.1373 10 15.9373C8.2 14.1373 6.2 12.3373 4.5 10.6373C2.7 8.7373 1.5 6.9373 1.5 5.7373C1.5 3.5373 3.3 1.7373 5.5 1.7373Z" fill="white"/>
-                    </svg>                        
-                </div>
-                <div class="peculiarities">
-                    <div v-for="peculiaritie in item.peculiarities" :key="peculiaritie" class="peculiarities-item hint--bottom-right" :aria-label="peculiaritie.name">
-                        <img :src="peculiaritie.imageSource" alt="">
+        <div style="display: flex; flex-direction: column; width: 100%;">
+            <div class="top" :style="'background: #ac662d url('+img+') 50% 50% no-repeat;'">
+                <div class="cont top-container">
+                    <div class="like" @click="item.like=!item.like">
+                        <svg v-if="item.like" class="like" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.5 0.237305C2.5 0.237305 0 2.7373 0 5.7373C0 7.7373 1.5 9.7373 3.4 11.7373C5.3 13.7373 7.6 15.7373 9.4 17.5373C9.7 17.8373 10.2 17.8373 10.5 17.5373C12.3 15.7373 14.7 13.7373 16.5 11.7373C18.3 9.7373 19.9 7.8373 19.9 5.7373C19.9 2.7373 17.4 0.237305 14.4 0.237305C12.7 0.237305 11.1 1.1373 9.9 2.7373C8.8 1.1373 7.2 0.237305 5.5 0.237305ZM5.5 1.7373C7 1.7373 8.2 2.5373 9.4 4.4373C9.6 4.8373 10.1 4.9373 10.4 4.6373C10.5 4.5373 10.6 4.5373 10.6 4.4373C11.8 2.5373 13 1.7373 14.5 1.7373C16.7 1.7373 18.5 3.5373 18.5 5.7373C18.5 6.9373 17.3 8.7373 15.5 10.6373C13.9 12.3373 11.8 14.1373 10 15.9373C8.2 14.1373 6.2 12.3373 4.5 10.6373C2.7 8.7373 1.5 6.9373 1.5 5.7373C1.5 3.5373 3.3 1.7373 5.5 1.7373Z" fill="white"/>
+                            <path d="M5.5 1.7373C7 1.7373 8.2 2.5373 9.4 4.4373C9.6 4.8373 10.1 4.9373 10.4 4.6373C10.5 4.5373 10.6 4.5373 10.6 4.4373C11.8 2.5373 13 1.7373 14.5 1.7373C16.7 1.7373 18.5 3.5373 18.5 5.7373C18.5 6.9373 17.3 8.7373 15.5 10.6373C13.9 12.3373 11.8 14.1373 10 15.9373C8.2 14.1373 6.2 12.3373 4.5 10.6373C2.7 8.7373 1.5 6.9373 1.5 5.7373C1.5 3.5373 3.3 1.7373 5.5 1.7373Z" fill="#F03434"/>
+                        </svg>                        
+                        <svg v-else class="like" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.5 0.237305C2.5 0.237305 0 2.7373 0 5.7373C0 7.7373 1.5 9.7373 3.4 11.7373C5.3 13.7373 7.6 15.7373 9.4 17.5373C9.7 17.8373 10.2 17.8373 10.5 17.5373C12.3 15.7373 14.7 13.7373 16.5 11.7373C18.3 9.7373 19.9 7.8373 19.9 5.7373C19.9 2.7373 17.4 0.237305 14.4 0.237305C12.7 0.237305 11.1 1.1373 9.9 2.7373C8.8 1.1373 7.2 0.237305 5.5 0.237305ZM5.5 1.7373C7 1.7373 8.2 2.5373 9.4 4.4373C9.6 4.8373 10.1 4.9373 10.4 4.6373C10.5 4.5373 10.6 4.5373 10.6 4.4373C11.8 2.5373 13 1.7373 14.5 1.7373C16.7 1.7373 18.5 3.5373 18.5 5.7373C18.5 6.9373 17.3 8.7373 15.5 10.6373C13.9 12.3373 11.8 14.1373 10 15.9373C8.2 14.1373 6.2 12.3373 4.5 10.6373C2.7 8.7373 1.5 6.9373 1.5 5.7373C1.5 3.5373 3.3 1.7373 5.5 1.7373Z" fill="white"/>
+                        </svg>                        
+                    </div>
+                    <div class="peculiarities">
+                        <div v-for="peculiaritie in item.peculiarities" :key="peculiaritie" class="peculiarities-item hint--bottom-right" :aria-label="peculiaritie.name">
+                            <img :src="peculiaritie.imageSource" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="middle cont">
-            <div class="title">{{item.name}}</div>
-            <div class="info">
-                <div>{{item.info.weight}}</div>
-                <div>{{item.info.calories}}</div>
-                <div class="price">{{item.info.price}}₽</div>
+            <div class="middle cont">
+                <div class="title">{{item.name}}</div>
+                <div class="info">
+                    <div>{{item.info.weight}}</div>
+                    <div>{{item.info.calories}}</div>
+                    <div class="price">{{item.info.price}}₽</div>
+                </div>
+                <div class="desc">{{item.description}}</div>
             </div>
-            <div class="desc">{{item.description}}</div>
         </div>
         <div class="bottom cont">
             <div class="btn">
@@ -39,8 +41,6 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue"
-
 var props = defineProps(['item'])
 var item = props.item
 var img = item.imageSource
@@ -54,6 +54,10 @@ var img = item.imageSource
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: rem(40) rem(40) rem(40) rem(5);
     overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .cont {
     margin: 0 auto;
@@ -85,7 +89,8 @@ var img = item.imageSource
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: rem(25);
+    column-gap: rem(25);
+    row-gap: rem(10);
     margin-top: rem(14);
 
     & > * {
@@ -106,6 +111,9 @@ var img = item.imageSource
     line-height: rem(20);
     color: rgba(33, 38, 41, 0.7);
     margin-top: rem(20);
+    word-wrap: break-word;
+            text-overflow: clip;
+            overflow: hidden;
 }
 .bottom {
     margin-top: rem(36);
