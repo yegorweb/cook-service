@@ -2,39 +2,39 @@
 <template>
     <div class="container">
         <div class="item">
-            <img src="@/assets/f-img.svg" alt="" class="item-img">
-            <a href="" class="item-text">WhatsApp</a>
+            <img src="@/assets/wa-footer.svg" alt="" class="item-img">
+            <a href="" class="item-text wa">WhatsApp</a>
         </div>
         <div class="item">
             <img src="@/assets/f-img.svg" alt="" class="item-img">
             <a href="tel:79454504660" class="item-text">+7 (945) 450-46-60</a>
         </div>
         <div class="item">
-            <img src="@/assets/f-img.svg" alt="" class="item-img">
+            <img src="@/assets/email.svg" alt="" class="item-img">
             <a href="" class="item-text">Написать на E-mail</a>
         </div>
         <div class="item">
-            <img src="@/assets/f-img.svg" alt="" class="item-img">
+            <img src="@/assets/private-menu.svg" alt="" class="item-img">
             <a href="" class="item-text">Меню для частных клиентов</a>
         </div>
         <div class="item">
-            <img src="@/assets/f-img.svg" alt="" class="item-img">
+            <img src="@/assets/corporate-menu.svg" alt="" class="item-img">
             <a href="" class="item-text">Меню для корпоративных заказов</a>
         </div>
         <div class="item">
-            <img src="@/assets/f-img.svg" alt="" class="item-img">
+            <img src="@/assets/about-delivery.svg" alt="" class="item-img">
             <a href="" class="item-text">О доставке</a>
         </div>
         <div class="item">
-            <img src="@/assets/f-img.svg" alt="" class="item-img">
+            <img src="@/assets/privacy-policy.svg" alt="" class="item-img">
             <a href="" class="item-text">Политика конфиденциальности</a>
         </div>
         <div class="item">
-            <img src="@/assets/f-img.svg" alt="" class="item-img">
+            <img src="@/assets/terms-of-use.svg" alt="" class="item-img">
             <a href="" class="item-text">Пользовательское соглашение</a>
         </div>
         <div class="item">
-            <a href="" class="item-text">© 2022 COOK service</a>
+            <a class="item-text">© 2022 COOK service</a>
         </div>
     </div>
 </template>
@@ -70,11 +70,14 @@
         color: #212629;
         text-decoration: none;
         cursor: pointer;
-        transition: all .15s;
+        transition: all .3s;
         
         &:hover {
             text-shadow: 0 0 rem(20) #808080;
         }
     }
+}
+.wa {
+    color: #25D366;
 }
 </style>
