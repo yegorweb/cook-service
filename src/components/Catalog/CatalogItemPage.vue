@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <div class="item" id="full-item" :style="'margin-top:' + getGap() + 'px;'">
+        <div class="item" id="full-item" :style="'margin-top:' + gap.value + 'px;'">
             <div class="top" :style="'background: #ac662d url('+item.imageSource+') 50% 50% no-repeat;'">
                 <div class="cont top-container">
                     <div class="top-topBar">
@@ -56,22 +56,12 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue"
+import { reactive } from "vue"
 
 var props = defineProps(['item'])
 var item = props.item
 var gapSended = false
-var gap = 0
-function getGap() {
-    if (!gapSended) {
-        onMounted(() => {
-            var gap = document.documentElement.scrollTop + 50 + document.getElementById('full-item').clientHeight < document.body.clientHeight ? document.documentElement.scrollTop + 50 : document.documentElement.clientHeight - document.getElementById('full-item').clientHeight
-            return gap
-            gapSended = true
-        })
-        console.log(gap)
-    }
-}
+var gap = reactive({value: document.documentElement.scrollTop + 50 < document.documentElement.offsetHeight - 1200 ? document.documentElement.scrollTop + 50 : document.documentElement.offsetHeight - 1200})
 </script>
 
 <style lang="scss" scoped>
