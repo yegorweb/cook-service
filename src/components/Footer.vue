@@ -27,11 +27,11 @@
         </div>
         <div class="item">
             <img src="@/assets/privacy-policy.svg" alt="" class="item-img">
-            <a href="" class="item-text">Политика конфиденциальности</a>
+            <router-link to="privacy-policy" href="" class="item-text">Политика конфиденциальности</router-link>
         </div>
         <div class="item">
             <img src="@/assets/terms-of-use.svg" alt="" class="item-img">
-            <a href="" class="item-text">Пользовательское соглашение</a>
+            <router-link to="terms-of-use" href="" class="item-text">Пользовательское соглашение</router-link>
         </div>
         <div class="item">
             <a class="item-text">© 2022 COOK service</a>

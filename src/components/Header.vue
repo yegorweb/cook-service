@@ -10,23 +10,144 @@
                     <div class="wa-text">WhatsApp</div>
                 </a>
                 <button class="btn button">Заказать 1 блюдо за 430₽</button>
-                <button class="account button">
+                <button class="account button" @click="menu=!menu">
                     <img src="@/assets/account.svg" alt="" class="account-img">
                 </button>
             </div>
         </div>
+        <transition mode="in-out" duration="100">
+        <div class="container menu-cont" v-if="menu">
+            <div class="menu">
+                <img src="@/assets/close-menu.svg" alt="" class="menu-closeBtn" @click="menu=!menu">
+                <div class="menu-buttons">
+                    <div class="menu-buttons-item">
+                        <img src="@/assets/orders.svg" alt="" class="menu-buttons-item-img">
+                        <div class="menu-buttons-item-text">Мои заказы</div>
+                    </div>
+                    <div class="menu-buttons-item">
+                        <img src="@/assets/deposit.svg" alt="" class="menu-buttons-item-img">
+                        <div class="menu-buttons-item-text">Депозит</div>
+                        <div class="menu-buttons-item-text-deposit">27 580₽</div>
+                    </div>
+                    <div class="menu-buttons-item">
+                        <img src="@/assets/cards.svg" alt="" class="menu-buttons-item-img">
+                        <div class="menu-buttons-item-text">Привязанные карты</div>
+                    </div>
+                    <div class="menu-buttons-item">
+                        <img src="@/assets/map.svg" alt="" class="menu-buttons-item-img">
+                        <div class="menu-buttons-item-text">Мои адреса</div>
+                    </div>
+                    <div class="menu-buttons-item">
+                        <img src="@/assets/user-data.svg" alt="" class="menu-buttons-item-img">
+                        <div class="menu-buttons-item-text">Мои данные</div>
+                    </div>
+                    <div class="menu-buttons-item">
+                        <img src="@/assets/logout.svg" alt="" class="menu-buttons-item-img">
+                        <div class="menu-buttons-item-text">Выйти</div>
+                    </div>
+                </div>
+                <div class="menu-waBtn">Обратиться в WhatsApp</div>
+            </div>
+        </div>
+        </transition>
     </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
+
+var menu = ref(false)
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/style.scss';
+.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    margin-top: rem(10);
+    background: #E9E9E9;
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.05), 60px 60px 80px rgba(0, 0, 0, 0.35);
+    border-radius: rem(40) rem(40) rem(40)rem(5);
+    padding: rem(20);
+    width: rem(320);
+
+    &-closeBtn {
+        float: right;
+        height: rem(20);
+        padding: rem(4);
+        cursor: pointer;
+    }
+    &-waBtn {
+        background: #25D366;
+        border-radius: 999px;
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-weight: 700;
+        font-size: rem(18);
+        color: #FFFFFF;
+        text-align: center;
+        padding: rem(10) 0;
+        margin-top: rem(30);
+        cursor: pointer;
+        transition: all .15s;
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.08), -1px -1px 6px rgba(255, 255, 255, 0.5), -5px -5px 20px #FFFFFF, 5px 5px 20px #D3D3D3;
+
+        &:hover {
+            box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.08), 1px 1px 6px rgba(255, 255, 255, 0.5), -5px -5px 20px #FFFFFF, -5px -5px 20px #D3D3D3;
+        }
+    }
+    &-buttons {
+        display: flex;
+        flex-direction: column;
+        margin-top: rem(44);
+
+        &-item {
+            padding: rem(20) 0;
+            display: flex;
+            flex-direction: row;
+            gap: rem(20);
+            align-items: center;
+            border-top: 1px solid #FFFFFF;
+            position: relative;
+            cursor: pointer;
+            &-img {
+                width: rem(20);
+            }
+            &-text {
+                position: absolute;
+                left: rem(40);
+                top: 50%;
+                transform: translateY(-50%);
+                font-family: 'Gilroy';
+                font-style: normal;
+                font-weight: 300;
+                font-size: rem(18);
+                color: #212629;
+                &-deposit {
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            &:last-child {
+                border-bottom: 1px solid #FFFFFF;                
+            }
+        }
+    }
+    &-cont {
+        position: relative;
+    }
+}
 .box {
     padding-top: rem(40);
+    margin-bottom: rem(60);
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    position: relative;
 }
 .container {
     display: flex;

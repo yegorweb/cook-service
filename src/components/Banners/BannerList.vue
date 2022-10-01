@@ -16,7 +16,4 @@ var props = defineProps(['list'])
 
 <style lang="scss" scoped>
 @import '@/assets/style.scss';
-.container {
-    margin-top: rem(60);
-}
 </style>
