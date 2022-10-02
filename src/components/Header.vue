@@ -15,11 +15,14 @@
                 </button>
             </div>
         </div>
-        <transition mode="in-out" duration="100">
         <div class="container menu-cont" v-if="menu">
             <div class="menu">
                 <img src="@/assets/close-menu.svg" alt="" class="menu-closeBtn" @click="menu=!menu">
                 <div class="menu-buttons">
+                    <router-link to="/cart" class="menu-buttons-item">
+                        <img src="@/assets/cart.svg" alt="" class="menu-buttons-item-img">
+                        <div class="menu-buttons-item-text">Корзина</div>
+                    </router-link>
                     <div class="menu-buttons-item">
                         <img src="@/assets/orders.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Мои заказы</div>
@@ -49,7 +52,6 @@
                 <div class="menu-waBtn">Обратиться в WhatsApp</div>
             </div>
         </div>
-        </transition>
     </div>
 </template>
 
@@ -126,6 +128,11 @@ var menu = ref(false)
                 font-size: rem(18);
                 color: #212629;
                 &-deposit {
+                    font-family: 'Gilroy';
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: rem(18);
+                    color: #FE9102;
                     position: absolute;
                     right: 0;
                     top: 50%;

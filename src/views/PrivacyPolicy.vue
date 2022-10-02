@@ -1,9 +1,6 @@
 <template>
     <div class="container">
-        <div class="title">
-            <img class="title-backbtn" @click="$router.push('/')" src="@/assets/back.svg" alt="">
-            <div class="title-text">Политика конфиденциальности</div>
-        </div>
+        <TitleAndBack :onBackClick="'home'">Политика конфиденциальности</TitleAndBack>
         <div class="text">
             <div class="text-paragraph">
                 <div class="text-paragraph-title">1. Что регулирует настоящая политика конфиденциальности </div>
@@ -40,23 +37,6 @@
         color: #212629;
     }
 }
-.title {
-    position: relative;
-    align-items: center;
-    &-backbtn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: rem(-40);
-        height: rem(14);
-        padding: rem(6);
-        cursor: pointer;
-    }
-    &-text {
-        font-weight: 700;
-        font-size: rem(32);
-    }
-}
 .text {
     display: flex;
     flex-direction: column;
@@ -87,5 +67,6 @@
 </style>
 
 <script setup>
+import TitleAndBack from '../components/TitleAndBack.vue';
 
 </script>

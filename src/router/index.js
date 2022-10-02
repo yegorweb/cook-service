@@ -18,6 +18,16 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/cart',
+      name: 'cart',
+      component: import('@/views/Orders/ShoppingCart.vue')
+    },
+    {
+      path: '/my-data',
+      name: 'my-data',
+      component: import('@/views/MyData.vue')
+    },
+    {
       path: '/privacy-policy',
       name: 'privacy-policy',
       component: PrivacyPolicy

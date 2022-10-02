@@ -45,6 +45,10 @@
 .container {
     display: grid;
     @include adaptive-value(grid-template-columns, 1fr 1fr 1fr, 1fr 1fr 1fr, 1fr 1fr, 1fr 1fr, 1fr);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     row-gap: rem(20);
     column-gap: rem(30);
     margin-top: rem(130);

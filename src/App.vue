@@ -20,6 +20,7 @@ import Footer from './components/Footer.vue';
 		overflow-x: hidden;
 		position: relative;
 	} body {
+		min-height: 100vh;
 		overflow-y: hidden;
 	} html {
 		overflow-y: visible;
