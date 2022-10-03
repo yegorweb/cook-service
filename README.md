@@ -2,7 +2,7 @@
 
 [__Figma design__](https://www.figma.com/file/zvR5GICKaE0W9D6XG31FrF/%D0%94%D0%B5%D1%81%D0%BA%D1%82%D0%BE%D0%BF?node-id=0%3A1)
 
-## Состояние проекта:&nbsp; :x: Не сделан &nbsp;&nbsp;![5%](https://progress-bar.dev/5)
+## Состояние проекта:&nbsp; :x: Не сделан &nbsp;&nbsp;![20%](https://progress-bar.dev/20)
 
 ## Этапы проекта:
 - [X] Инициализировать проект
