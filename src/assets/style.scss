@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 @function rem($n) {
-    @return ($n / $base-font) * 1rem;
+    @return (calc($n / $base-font)) * 1rem;
 }
 
 $base-font: 16;

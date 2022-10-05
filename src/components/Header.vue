@@ -15,7 +15,7 @@
                 </button>
             </div>
         </div>
-        <div class="container menu-cont" v-if="menu">
+        <div class="container menu-cont" v-show="menu">
             <div class="menu">
                 <img src="@/assets/close-menu.svg" alt="" class="menu-closeBtn" @click="menu=!menu">
                 <div class="menu-buttons">
