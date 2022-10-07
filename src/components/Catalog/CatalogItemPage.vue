@@ -49,14 +49,20 @@
                     <div class="btn-count">{{item.amount}}</div>
                     <div @click="item.amount+=1" class="btn-plus">+</div>
                 </div>
-                <a class="add"><div>Добавить {{item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])}}₽</div></a>
+                <a class="add" @click="addToCart"><div>Добавить {{item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])}}₽</div></a>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { reactive } from "vue"
+import { createApp, provide, reactive } from "vue"
+
+function addToCart() {
+    const app = createApp('app')
+    app.provide('item', item)
+    console.log('here', item)
+}
 
 var props = defineProps(['item'])
 var item = props.item

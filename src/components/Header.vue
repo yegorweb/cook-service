@@ -40,10 +40,10 @@
                         <img src="@/assets/map.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Мои адреса</div>
                     </div>
-                    <div class="menu-buttons-item">
+                    <router-link to="/my-data" class="menu-buttons-item">
                         <img src="@/assets/user-data.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Мои данные</div>
-                    </div>
+                    </router-link>
                     <div class="menu-buttons-item">
                         <img src="@/assets/logout.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Выйти</div>
@@ -73,7 +73,8 @@ var menu = ref(false)
     box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.05), 60px 60px 80px rgba(0, 0, 0, 0.35);
     border-radius: rem(40) rem(40) rem(40)rem(5);
     padding: rem(20);
-    width: rem(320);
+    max-width: rem(320);
+    min-width: rem(320);
 
     &-closeBtn {
         float: right;
