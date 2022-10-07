@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <TitleAndBack onBackClick="home">Мои данные</TitleAndBack>
+        <TitleAndBack onBackClick="back">Мои данные</TitleAndBack>
         <div class="inputs">
             <Input placeholder="Имя" label="Как вас зовут?" v-on:val="(a) => {name=a}" />
             <Input placeholder="+7 (900) 000 00-00" label="Телефон" v-on:val="(a) => {phone=a}" />
@@ -50,6 +50,5 @@ var phone = ref('')
     @include adaptive-value(grid-template-columns, 2fr 1fr, 2fr 1fr, 2fr 1fr, 2fr 1fr, 1fr);
     display: grid;
     gap: rem(20);
-    margin-top: rem(40);
 }
 </style>

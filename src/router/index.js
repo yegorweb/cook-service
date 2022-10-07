@@ -25,7 +25,12 @@ const router = createRouter({
     {
       path: '/my-addresses',
       name: 'my-addresses',
-      component: import('@/views/MyAddresses.vue')
+      component: import('@/views/MyAddresses/MyAddresses.vue')
+    },
+    {
+      path: '/create-address',
+      name: 'create-address',
+      component: import('@/views/MyAddresses/CreateAddress.vue')
     },
     {
       path: '/my-data',

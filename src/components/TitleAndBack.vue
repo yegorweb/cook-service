@@ -14,6 +14,7 @@ var props = defineProps(['onBackClick', 'title'])
 .title {
     position: relative;
     align-items: center;
+    margin-bottom: rem(30);
     &-backbtn {
         position: absolute;
         top: 50%;

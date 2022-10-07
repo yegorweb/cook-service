@@ -24,6 +24,7 @@ var props = defineProps(['bg', 'color', 'width'])
     font-weight: 700;
     font-size: rem(18);
     user-select: none;
+    text-decoration: none;
     
     &:hover {
         box-shadow: -1px -1px 6px rgba(0, 0, 0, 0.12), 1px 1px 6px rgba(255, 255, 255, 0.5), 5px 5px 20px #FFFFFF, -5px -5px 20px #D3D3D3;

@@ -64,7 +64,6 @@ var delivery = ref(0)
 <style lang="scss" scoped>
 @import '@/assets/style.scss';
 .items-cont {
-    margin-top: rem(30);
     display: flex;
     flex-direction: column;
     justify-content: center;

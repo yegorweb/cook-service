@@ -29,7 +29,6 @@
 .container {
     display: flex;
     flex-direction: column;
-    gap: rem(40);
 
     & * {
         font-family: 'Gilroy';
