@@ -6,7 +6,7 @@
             <Input placeholder="+7 (900) 000 00-00" label="Телефон" v-on:val="(a) => {phone=a}" />
         </div>
         <div class="buttons">
-            <Button color="#212629" bg="#EFEFEF" :width="(320/16)+'rem'">Cохранить</Button>
+            <Button color="#212629" bg="#E9E9E9" :width="(320/16)+'rem'">Cохранить</Button>
             <div class="delete">Удалить аккаунт</div>
         </div>
     </div>
@@ -43,13 +43,13 @@ var phone = ref('')
     width: 100%;
     gap: rem(30);
     align-items: center;
-    margin-top: rem(20);
+    margin-top: rem(30);
     user-select: none;
 }
 .inputs {
     @include adaptive-value(grid-template-columns, 2fr 1fr, 2fr 1fr, 2fr 1fr, 2fr 1fr, 1fr);
     display: grid;
     gap: rem(20);
-    margin-top: rem(30);
+    margin-top: rem(40);
 }
 </style>

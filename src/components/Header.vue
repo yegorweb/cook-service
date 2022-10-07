@@ -36,10 +36,10 @@
                         <img src="@/assets/cards.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Привязанные карты</div>
                     </div>
-                    <div class="menu-buttons-item">
+                    <router-link to="/my-addresses" class="menu-buttons-item">
                         <img src="@/assets/map.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Мои адреса</div>
-                    </div>
+                    </router-link>
                     <router-link to="/my-data" class="menu-buttons-item">
                         <img src="@/assets/user-data.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Мои данные</div>
