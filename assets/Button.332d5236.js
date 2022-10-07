@@ -1,0 +1,1 @@
+import{_ as c,o as n,c as r,j as _,n as a,u as e}from"./index.de71beaf.js";const l={__name:"Button",props:["bg","color","width"],setup(o){const t=o;return(s,u)=>(n(),r("div",{class:"btn",style:a("background: "+e(t).bg+"; color: "+e(t).color+"; width: "+e(t).width+";")},[_(s.$slots,"default",{},void 0,!0)],4))}},p=c(l,[["__scopeId","data-v-02c88c21"]]);export{p as B};
