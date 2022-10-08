@@ -23,10 +23,10 @@ var item = ref(props.item)
 <style lang="scss" scoped>
 @import '@/assets/style.scss';
 .container {
+    @include adaptive-value(height, rem(460), rem(460), rem(400), rem(400), rem(400));
+    @include adaptive-value(padding, rem(50), rem(50), rem(50), rem(50), rem(40));
     border-radius: rem(40) rem(40) rem(40) rem(5);
     box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.05), 40px 40px 50px rgba(0, 0, 0, 0.5);
-    height: rem(460);
-    padding: rem(50);
     box-sizing: border-box;
     background: #212629;
     position: relative;
@@ -40,20 +40,19 @@ var item = ref(props.item)
     align-items: flex-start;
 }
 .title {
+    @include adaptive-value(font-size, rem(48), rem(48), rem(48), rem(48), rem(36));
     font-family: 'Gilroy';
     font-style: normal;
     font-weight: 700;
-    font-size: rem(48);
-    line-height: rem(56);
     color: #FFFFFF;
+    word-break: keep-all;
 }
 .btn {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: rem(18);
-    height: rem(40);
-    padding: 0 rem(26);
+    padding: rem(8) rem(26);
     border-radius: 9999px;
     background: #212629;
     text-decoration: none;

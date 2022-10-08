@@ -13,9 +13,9 @@
 </template>
 
 <script setup>
-import Button from '../components/Button.vue';
-import TitleAndBack from '../components/TitleAndBack.vue';
-import Input from '../components/Input.vue';
+import Button from '@/components/Button.vue';
+import TitleAndBack from '@/components/TitleAndBack.vue';
+import Input from '@/components/Input.vue';
 import { ref } from 'vue';
 
 var name = ref('')

@@ -28,6 +28,7 @@ var props = defineProps(['onBackClick', 'title'])
         font-family: 'Gilroy';
         font-weight: 700;
         font-size: rem(32);
+        color: #212629;
     }
 }
 </style>

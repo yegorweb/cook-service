@@ -15,7 +15,7 @@
 
 <script setup>
 import { ref, reactive } from "vue"
-import CatalogItem from "./CatalogItem.vue";
+import CatalogItem from "@/components/Catalog/CatalogItem.vue";
 
 var props = defineProps(['items', 'currentCategory'])
 var emit = defineEmits(['openFullItem'])

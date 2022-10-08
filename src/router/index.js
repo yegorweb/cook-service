@@ -28,6 +28,16 @@ const router = createRouter({
       component: import('@/views/MyAddresses/MyAddresses.vue')
     },
     {
+      path: '/my-cards',
+      name: 'my-cards',
+      component: import('@/views/MyCards/Cards.vue')
+    },
+    {
+      path: '/create-card',
+      name: 'create-card',
+      component: import('@/views/MyCards/CreateCard.vue')
+    },
+    {
       path: '/create-address',
       name: 'create-address',
       component: import('@/views/MyAddresses/CreateAddress.vue')

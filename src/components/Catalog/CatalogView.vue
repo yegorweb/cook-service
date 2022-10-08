@@ -22,10 +22,10 @@
 
 <script setup>
 import { reactive, ref } from "vue";
-import CatalogButtons from "./CatalogButtons.vue";
-import CatalogItems from "./CatalogItems.vue";
-import CatalogCorporate from "./CatalogCorporate.vue";
-import CatalogItemPage from "./CatalogItemPage.vue";
+import CatalogButtons from "@/components/Catalog/CatalogButtons.vue";
+import CatalogItems from "@/components/Catalog/CatalogItems.vue";
+import CatalogCorporate from "@/components/Catalog/CatalogCorporate.vue";
+import CatalogItemPage from "@/components/Catalog/CatalogItemPage.vue";
 
 var items = ref([{
     like: false,

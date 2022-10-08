@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <div class="item" id="full-item" :style="'margin-top:' + gap.value + 'px;'">
-            <div class="top" :style="'background: #ac662d url('+item.imageSource+') 50% 50% no-repeat;'">
+            <div class="top">
                 <div class="cont top-container">
                     <div class="top-topBar">
                         <div class="like" @click="item.like=!item.like">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="peculiarities">
                         <div v-for="peculiaritie in item.peculiarities" :key="peculiaritie" class="peculiarities-item hint--bottom-right" :aria-label="peculiaritie.name">
-                            <img :src="peculiaritie.imageSource" alt="">
+                            <img src="@/assets/spicy.svg" alt="">
                         </div>
                     </div>
                 </div>
@@ -104,6 +104,7 @@ var gap = reactive({value: document.documentElement.scrollTop + 50 < document.do
     display: flex;
     align-items: center;
     background-size: cover !important;
+    background: #ac662d url(@/assets/item-image.jpg) 50% 50% no-repeat;
     position: relative;
     user-select: none;
 

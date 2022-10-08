@@ -3,11 +3,12 @@
 	<CatalogView />
 </template>
 
-
 <script setup>
 import { ref } from 'vue';
-import BannerList from '../components/Banners/BannerList.vue';
-import CatalogView from '../components/Catalog/CatalogView.vue';
+import BannerList from '@/components/Banners/BannerList.vue';
+import CatalogView from '@/components/Catalog/CatalogView.vue';
+
+// TODO: Менять "Мои данные" на "Зарегистрироваться"
 
 var bannerList = ref([{
 	type: 'main',

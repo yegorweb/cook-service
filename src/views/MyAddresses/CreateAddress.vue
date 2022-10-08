@@ -14,11 +14,11 @@
 </template>
 
 <script setup>
-import Input from '../../components/Input.vue';
-import TitleAndBack from '../../components/TitleAndBack.vue';
-import TextArea from '../../components/TextArea.vue';
+import Input from '@/components/Input.vue';
+import TitleAndBack from '@/components/TitleAndBack.vue';
+import TextArea from '@/components/TextArea.vue';
 import { ref } from 'vue';
-import Button from '../../components/Button.vue';
+import Button from '@/components/Button.vue';
 
 var name = ref('')
 var address = ref('')

@@ -15,10 +15,10 @@
 <script setup>
 import TitleAndBack from '@/components/TitleAndBack.vue';
 import { inject, ref } from 'vue';
-import Input from '../../components/Input.vue';
-import ShoppingCartItem from '../../components/ShoppingCart/ShoppingCartItem.vue';
-import ShoppingCartPersons from '../../components/ShoppingCart/ShoppingCartPersons.vue';
-import ShoppingCartDelivery from '../../components/ShoppingCart/ShoppingCartDelivery.vue';
+import Input from '@/components/Input.vue';
+import ShoppingCartItem from '@/components/ShoppingCart/ShoppingCartItem.vue';
+import ShoppingCartPersons from '@/components/ShoppingCart/ShoppingCartPersons.vue';
+import ShoppingCartDelivery from '@/components/ShoppingCart/ShoppingCartDelivery.vue';
 
 var items = ref([{
     like: false,

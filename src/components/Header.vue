@@ -32,10 +32,10 @@
                         <div class="menu-buttons-item-text">Депозит</div>
                         <div class="menu-buttons-item-text-deposit">27 580₽</div>
                     </div>
-                    <div class="menu-buttons-item" @click="menu=!menu">
+                    <router-link to="/my-cards" class="menu-buttons-item" @click="menu=!menu">
                         <img src="@/assets/cards.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Привязанные карты</div>
-                    </div>
+                    </router-link>
                     <router-link to="/my-addresses" class="menu-buttons-item" @click="menu=!menu">
                         <img src="@/assets/map.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Мои адреса</div>
@@ -75,6 +75,7 @@ var menu = ref(false)
     padding: rem(20);
     max-width: rem(320);
     min-width: rem(320);
+    box-sizing: border-box;
 
     &-closeBtn {
         float: right;
