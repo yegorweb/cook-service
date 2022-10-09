@@ -22,6 +22,16 @@ var item = ref(props.item)
 
 <style lang="scss" scoped>
 @import '@/assets/style.scss';
+.swiper-pagination-bullet {
+    height: rem(10);
+    background: #FFFFFF url(@/assets/banner-notSelected.svg) 50% 50% no-repeat;
+    background-size: cover !important;
+}
+.swiper-pagination-bullet-active {
+    height: rem(15);
+    background: #FFFFFF url(@/assets/banner-selected.svg) 50% 50% no-repeat;
+    background-size: cover !important;
+}
 .container {
     @include adaptive-value(height, rem(460), rem(460), rem(400), rem(400), rem(400));
     @include adaptive-value(padding, rem(50), rem(50), rem(50), rem(50), rem(40));
@@ -82,5 +92,6 @@ var item = ref(props.item)
     bottom: rem(-80);
     width: auto;
     height: rem(490);
+    z-index: 999;
 }
 </style>

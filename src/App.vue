@@ -16,12 +16,12 @@ import Footer from './components/Footer.vue';
 	body, html {
 		margin: 0;
 		padding: 0;
-		background: #E5E5E5;
 		overflow-x: hidden;
 		position: relative;
 	} body {
 		min-height: 100vh;
 		overflow-y: hidden;
+		background: #E5E5E5;
 	} html {
 		overflow-y: visible;
 	}
