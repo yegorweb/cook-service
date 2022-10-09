@@ -7,7 +7,7 @@
                 <div class="amount-count">{{persons}}</div>
                 <div @click="persons+=1" class="amount-plus">+</div>
             </div>
-            <div class="price">23232</div><!-- {{persons * item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])}}₽</div> -->
+            <div class="price">{{persons}}</div><!-- {{persons * item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])}}₽</div> -->
         </div>
     </div>
 </template>

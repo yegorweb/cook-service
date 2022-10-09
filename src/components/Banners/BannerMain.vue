@@ -6,7 +6,7 @@
             </div>
             <a :href="item.buttonLink" class="btn">
                 <div class="btn-text">{{item.buttonText}}</div>
-                <img class="btn-img" :src="item.buttonImageSource" alt="image" />
+                <img class="btn-img" src="@/assets/banner-btn.svg" alt="image" />
             </a>
         </div>
         <img src="@/assets/banner-img.png" alt="" class="img">

@@ -6,7 +6,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-  let baseUrl = mode == 'development' ? '/' : '/cook-service/'
+  var baseUrl = mode == 'development' ? '/' : '/cook-service/'
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
   return {
     plugins: [vue(), vueJsx()],
