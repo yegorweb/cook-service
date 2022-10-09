@@ -9,7 +9,7 @@
                 <img class="btn-img" :src="item.buttonImageSource" alt="image" />
             </a>
         </div>
-        <img :src="item.imageSource" alt="" class="img">
+        <img src="@/assets/banner-img.png" alt="" class="img">
     </div>
 </template>
 

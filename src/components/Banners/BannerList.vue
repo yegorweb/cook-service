@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <template v-for="item in this.props.list" :key="item">
+        <template v-for="item in props.list" :key="item">
             <BannerMain v-if="item.type == 'main'" :item="item" />
             <!-- <BannerImg v-else v-bind:item="item" /> -->
         </template>
@@ -8,8 +8,8 @@
 </template>
 
 <script setup>
-import BannerMain from './BannerMain.vue';
-import BannerImg from './BannerImg.vue';
+import BannerMain from '@/components/Banners/BannerMain.vue';
+import BannerImg from '@/components/Banners/BannerImg.vue';
 
 var props = defineProps(['list'])
 </script>

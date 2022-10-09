@@ -20,32 +20,32 @@ const router = createRouter({
     {
       path: '/cart',
       name: 'cart',
-      component: import('@/views/Orders/ShoppingCart.vue')
+      component: () => import('../views/Orders/ShoppingCart.vue')
     },
     {
       path: '/my-addresses',
       name: 'my-addresses',
-      component: import('@/views/MyAddresses/MyAddresses.vue')
+      component: () => import('../views/MyAddresses/MyAddresses.vue')
     },
     {
       path: '/my-cards',
       name: 'my-cards',
-      component: import('@/views/MyCards/Cards.vue')
+      component: () => import('../views/MyCards/Cards.vue')
     },
     {
       path: '/create-card',
       name: 'create-card',
-      component: import('@/views/MyCards/CreateCard.vue')
+      component: () => import('../views/MyCards/CreateCard.vue')
     },
     {
       path: '/create-address',
       name: 'create-address',
-      component: import('@/views/MyAddresses/CreateAddress.vue')
+      component: () => import('../views/MyAddresses/CreateAddress.vue')
     },
     {
       path: '/my-data',
       name: 'my-data',
-      component: import('@/views/MyData.vue')
+      component: () => import('../views/MyData.vue')
     },
     {
       path: '/privacy-policy',

@@ -1,7 +1,7 @@
 <template>
     <div class="item">
         <div style="display: flex; flex-direction: column; width: 100%;">
-            <div class="top" :style="'background: #ac662d url('+img+') 50% 50% no-repeat;'">
+            <div class="top">
                 <div class="cont top-container">
                     <div class="like" @click="item.like=!item.like">
                         <svg v-if="item.like" class="like" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +14,7 @@
                     </div>
                     <div class="peculiarities">
                         <div v-for="peculiaritie in item.peculiarities" :key="peculiaritie" class="peculiarities-item hint--bottom-right" :aria-label="peculiaritie.name">
-                            <img :src="peculiaritie.imageSource" alt="">
+                            <img src="@/assets/spicy.svg" alt="">
                         </div>
                     </div>
                 </div>
@@ -68,6 +68,7 @@ var img = item.imageSource
     display: flex;
     align-items: center;
     background-size: cover !important;
+    background: #ac662d url(@/assets/item-image.jpg) 50% 50% no-repeat;
     position: relative;
     user-select: none;
 }
