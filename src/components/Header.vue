@@ -44,6 +44,10 @@
                         <img src="@/assets/user-data.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Мои данные</div>
                     </router-link>
+                    <router-link to="/registration" class="menu-buttons-item" @click="menu=!menu">
+                        <img src="@/assets/user-data.svg" alt="" class="menu-buttons-item-img">
+                        <div class="menu-buttons-item-text">Регистрация</div>
+                    </router-link>
                     <div class="menu-buttons-item" @click="menu=!menu">
                         <img src="@/assets/logout.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Выйти</div>

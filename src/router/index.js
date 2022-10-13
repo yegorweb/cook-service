@@ -48,6 +48,11 @@ const router = createRouter({
       component: () => import('../views/MyData.vue')
     },
     {
+      path: '/registration',
+      name: 'registration',
+      component: () => import('../views/RegistrationView.vue')
+    },
+    {
       path: '/privacy-policy',
       name: 'privacy-policy',
       component: PrivacyPolicy
