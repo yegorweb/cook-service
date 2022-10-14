@@ -1,39 +1,6 @@
-<template>
-    <div class="container">
-        <TitleAndBack onBackClick="home">Регистрация</TitleAndBack>
-        <div style="display: flex;flex-direction: column;gap: 10px;">
-            <Input label="Ваше имя" placeholder="Иван" maxlength="28" v-on:val="(a) => {name=a}" />
-            <Input label="Ваш телефон" placeholder="+7 (___) ___ __-__" maxlength="22" type="tel" v-on:val="(a) => {phone=a}" />
-            <Input label="Пароль" placeholder="************" maxlength="30" type="password" inputID="password" v-on:val="(a) => {password=a}" />
-        </div>
-        <Button @click="submit" :marginTop="30">Cохранить</Button>
-    </div>
-</template>
-
-<script setup>
-import TitleAndBack from '../components/TitleAndBack.vue';
-import Input from '../components/Input.vue';
-import Button from '../components/Button.vue';
-import axios from 'axios';
-import { onMounted, ref } from 'vue';
-
-var name = ref('')
-var phone = ref('')
-var password = ref('')
-
-function submit() {
-    axios({
-        url: 'http://localhost:3000/registration',
-        method: 'post',
-        data: {
-            name: name.value,
-            phone: phone.value,
-            password: password.value
-        }
-    })
-}
-onMounted(() => {
-    var phoneInputs = document.querySelectorAll('input[data-tel-input=true]');
+document.addEventListener("DOMContentLoaded", function () {
+    console.log('Оно работает')
+    var phoneInputs = document.querySelectorAll('input[data-tel-input]');
 
     var getInputNumbersValue = function (input) {
         // Return stripped input value — just numbers
@@ -108,8 +75,3 @@ onMounted(() => {
         phoneInput.addEventListener('paste', onPhonePaste, false);
     }
 })
-</script>
-
-<style lang="scss" scoped>
-@import '@/assets/style.scss';
-</style>

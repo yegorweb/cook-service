@@ -1,12 +1,33 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <div class="btn" :style="'background: ' + props.bg + '; color: ' + props.color + '; width: ' + props.width + ';'">
+    <div class="btn" :style="'background: ' + props.bg + '; color: ' + props.color + '; width: ' + props.width/16 + 'rem; margin-top: ' + props.marginTop/16 + 'rem;'">
         <slot></slot>
     </div>
 </template>
 
 <script setup>
-var props = defineProps(['bg', 'color', 'width'])
+var props = defineProps({
+    bg: {
+        type: String,
+        required: false,
+        default: '#E9E9E9'
+    },
+    color: {
+        type: String,
+        required: false,
+        default: '#212629'
+    }, 
+    width: {
+        type: Number,
+        required: false,
+        default: 320
+    },
+    marginTop: {
+        type: Number,
+        required: false,
+        default: 0
+    }
+})
 </script>
 
 <style lang="scss" scoped>

@@ -7,7 +7,7 @@
             <TextArea label="Комментарий (если есть)" placeholder="Например: Оставляйте под дверью" v-on:val="(a) => {comment=a}" />
         </div>
         <div class="buttons">
-            <Button color="#212629" bg="#E9E9E9" :width="(320/16)+'rem'">Cохранить</Button>
+            <Button>Cохранить</Button>
             <div class="delete">Удалить адрес</div>
         </div>
     </div>

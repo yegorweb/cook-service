@@ -7,7 +7,7 @@
             <Input label="Имя держателя карты" placeholder="IVAN IVANOV" :val="(a) => {name=a}" />
             <Input label="CVC2/CVV2" placeholder="***" :val="(a) => {cvc=a}" />
         </div>
-        <Button :style="'margin-top: '+(34/16)+'rem;'" color="#212629" bg="#E9E9E9" :width="(320/16)+'rem'">Добавить карту</Button>
+        <Button :marginTop="34">Добавить карту</Button>
     </div>
 </template>
 

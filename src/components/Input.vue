@@ -2,15 +2,60 @@
 <template>
     <div>
         <label>{{props.label}}</label>
-        <input :placeholder="props.placeholder" type="text" v-model="value" @input="$emit('val', value)" />
+        <div class="input">
+            <input 
+                :data-tel-input="props.type=='tel'" 
+                :type="props.type" 
+                :maxlength="props.maxlength" 
+                :id="props.inputID" 
+                :placeholder="props.placeholder" 
+                v-model="value" 
+                @input="$emit('val', value)" 
+            />
+            <img v-if="props.type=='password'" class="password-control" @click="changeVisibile()" :src="getURL()" />
+        </div>
     </div>
 </template>
 
 <script setup>
-import { ref } from "vue"
+import { ref } from "vue";
 
-var props = defineProps(['placeholder', 'label'])
 var value = ref('')
+var visible = ref(false)
+function getURL() {
+    return visible.value ? import.meta.env.VITE_API_URL + '/visible.png' : import.meta.env.VITE_API_URL + 'invisible.png'
+}
+function changeVisibile() {
+    if (visible.value) {
+        document.getElementById(props.inputID).setAttribute('type', 'password');
+    } else {
+        document.getElementById(props.inputID).setAttribute('type', 'text');
+    }
+    visible.value = !visible.value
+}
+var props = defineProps({
+    placeholder: {
+        type: String,
+        required: false
+    },
+    label: {
+        type: String,
+        required: true
+    },
+    inputID: {
+        type: String,
+        required: false
+    },
+    type: {
+        type: String,
+        required: false,
+        default: 'text'
+    },
+    maxlength: {
+        type: String,
+        required: false,
+    }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -52,5 +97,15 @@ input {
         border: 1px solid #FFFFFF;
         outline: 0;
     }
+} .input {
+    width: 100%;
+    position: relative;
+} .password-control {
+    position: absolute;
+    right: rem(14);
+    height: rem(26);
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
 </style>

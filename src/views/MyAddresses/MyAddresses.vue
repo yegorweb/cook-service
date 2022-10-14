@@ -4,7 +4,7 @@
         <div class="items">
             <AddressItem v-for="address in addresses" :key="address" :address="address" />
         </div>
-        <router-link style="text-decoration: none;" to="/create-address"><Button :style="'margin-top: '+(30/16)+'rem;'" color="#212629" bg="#E9E9E9" :width="(320/16)+'rem'">Добавить адрес</Button></router-link>
+        <router-link style="text-decoration: none;" to="/create-address"><Button :marginTop="30">Добавить адрес</Button></router-link>
     </div>
 </template>
 

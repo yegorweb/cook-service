@@ -414,6 +414,18 @@
     "core-js" "^3.15.1"
     "nanopop" "^2.1.0"
 
+"@types/jquery@^3.5.14":
+  "integrity" "sha512-X1gtMRMbziVQkErhTQmSe2jFwwENA/Zr+PprCkF63vFq+Yt5PZ4AlKqgmeNlwgn7dhsXEK888eIW2520EpC+xg=="
+  "resolved" "https://registry.npmjs.org/@types/jquery/-/jquery-3.5.14.tgz"
+  "version" "3.5.14"
+  dependencies:
+    "@types/sizzle" "*"
+
+"@types/sizzle@*":
+  "integrity" "sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ=="
+  "resolved" "https://registry.npmjs.org/@types/sizzle/-/sizzle-2.3.3.tgz"
+  "version" "2.3.3"
+
 "@vitejs/plugin-vue-jsx@^2.0.1":
   "integrity" "sha512-lmiR1k9+lrF7LMczO0pxtQ8mOn6XeppJDHxnpxkJQpT5SiKz4SKhKdeNstXaTNuR8qZhUo5X0pJlcocn72Y4Jg=="
   "resolved" "https://registry.npmjs.org/@vitejs/plugin-vue-jsx/-/plugin-vue-jsx-2.0.1.tgz"
@@ -1242,6 +1254,11 @@
   "resolved" "https://registry.npmjs.org/ignore/-/ignore-5.2.0.tgz"
   "version" "5.2.0"
 
+"imask@^6.4.3":
+  "integrity" "sha512-aH2GHemGkr3cbRBfhogHMIx05eUxdHrZNlKTTLmz8VxpSopuHHJ8+85FsDlBVQqxPlDLhZuwj4lpHHWbLOdBSw=="
+  "resolved" "https://registry.npmjs.org/imask/-/imask-6.4.3.tgz"
+  "version" "6.4.3"
+
 "immutable@^4.0.0":
   "integrity" "sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ=="
   "resolved" "https://registry.npmjs.org/immutable/-/immutable-4.1.0.tgz"
@@ -1870,7 +1887,7 @@
   optionalDependencies:
     "fsevents" "~2.3.2"
 
-"vue-demi@*":
+"vue-demi@*", "vue-demi@^0.13.11":
   "integrity" "sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A=="
   "resolved" "https://registry.npmjs.org/vue-demi/-/vue-demi-0.13.11.tgz"
   "version" "0.13.11"
@@ -1888,6 +1905,14 @@
     "lodash" "^4.17.21"
     "semver" "^7.3.6"
 
+"vue-imask@^6.4.3":
+  "integrity" "sha512-lGHtknLGZMtWPaQCkeqGrdOpXMq2LfPhiV1NaJ1Kn4YRNXOWFGZt135tRBs5W0gYXTP5g947andrxcJNlPW07g=="
+  "resolved" "https://registry.npmjs.org/vue-imask/-/vue-imask-6.4.3.tgz"
+  "version" "6.4.3"
+  dependencies:
+    "imask" "^6.4.3"
+    "vue-demi" "^0.13.11"
+
 "vue-router@^4.1.5":
   "integrity" "sha512-IsvoF5D2GQ/EGTs/Th4NQms9gd2NSqV+yylxIyp/OYp8xOwxmU8Kj/74E9DTSYAyH5LX7idVUngN3JSj1X4xcQ=="
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.1.5.tgz"
@@ -1902,7 +1927,7 @@
   dependencies:
     "is-plain-object" "3.0.1"
 
-"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.38", "vue@>=3.0.3", "vue@>=3.2.0", "vue@3.2.38":
+"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.38", "vue@>=2.2.0", "vue@>=3.0.3", "vue@>=3.2.0", "vue@3.2.38":
   "integrity" "sha512-hHrScEFSmDAWL0cwO4B6WO7D3sALZPbfuThDsGBebthrNlDxdJZpGR3WB87VbjpPh96mep1+KzukYEhpHDFa8Q=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.38.tgz"
   "version" "3.2.38"

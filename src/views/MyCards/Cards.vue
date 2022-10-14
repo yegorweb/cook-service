@@ -5,7 +5,7 @@
         <div class="items">
             <CardItem v-for="card in cards" :key="card" :card="card" />
         </div>
-        <router-link style="text-decoration: none;" to="/create-card"><Button :style="'margin-top: '+(30/16)+'rem;'" color="#212629" bg="#E9E9E9" :width="(320/16)+'rem'">Добавить карту</Button></router-link>
+        <router-link style="text-decoration: none;" to="/create-card"><Button :marginTop="30">Добавить карту</Button></router-link>
     </div>    
 </template>
 
