@@ -7,8 +7,9 @@
                 :data-tel-input="props.type=='tel'" 
                 :type="props.type" 
                 :maxlength="props.maxlength" 
-                :id="props.inputID" 
-                :placeholder="props.placeholder" 
+                :id="props.inputID"
+                :placeholder="props.placeholder"
+                
                 v-model="value" 
                 @input="$emit('val', value)" 
             />
@@ -23,7 +24,7 @@ import { ref } from "vue";
 var value = ref('')
 var visible = ref(false)
 function getURL() {
-    return visible.value ? import.meta.env.VITE_API_URL + '/visible.png' : import.meta.env.VITE_API_URL + 'invisible.png'
+    return visible.value ? import.meta.env.VITE_API_URL + 'visible.png' : import.meta.env.VITE_API_URL + 'invisible.png'
 }
 function changeVisibile() {
     if (visible.value) {
@@ -86,6 +87,7 @@ input {
     font-weight: 700;
     font-style: normal;
     font-size: rem(18);
+    display: flex;
     color: #212629;
 
     &::placeholder {

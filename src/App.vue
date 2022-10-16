@@ -12,6 +12,7 @@ import Footer from './components/Footer.vue';
 
 <style lang="scss">
 	@import '@/assets/style';
+	@import '@/assets/hint.css';
 
 	body, html {
 		margin: 0;

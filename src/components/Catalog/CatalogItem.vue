@@ -13,7 +13,7 @@
                         </svg>                        
                     </div>
                     <div class="peculiarities">
-                        <div v-for="peculiaritie in item.peculiarities" :key="peculiaritie" class="peculiarities-item hint--bottom-right" :aria-label="peculiaritie.name">
+                        <div v-for="peculiaritie in item.peculiarities" :key="peculiaritie" class="peculiarities-item hint--rounded hint--bottom-right" :aria-label="peculiaritie.name">
                             <img src="@/assets/spicy.svg" alt="">
                         </div>
                     </div>

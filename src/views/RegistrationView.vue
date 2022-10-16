@@ -2,9 +2,38 @@
     <div class="container">
         <TitleAndBack onBackClick="home">Регистрация</TitleAndBack>
         <div style="display: flex;flex-direction: column;gap: 10px;">
-            <Input label="Ваше имя" placeholder="Иван" maxlength="28" v-on:val="(a) => {name=a}" />
-            <Input label="Ваш телефон" placeholder="+7 (___) ___ __-__" maxlength="22" type="tel" v-on:val="(a) => {phone=a}" />
-            <Input label="Пароль" placeholder="************" maxlength="30" type="password" inputID="password" v-on:val="(a) => {password=a}" />
+            <div class="warn" v-show="name_mistake">
+                Слишком короткое имя
+            </div>
+            <Input 
+                label="Ваше имя" 
+                placeholder="Иван" 
+                maxlength="28" 
+                inputID="name" 
+                v-on:val="(a) => {name=a}" 
+            />
+            <div class="warn" v-show="phone_mistake">
+                Слишком короткий номер телефона
+            </div>
+            <Input 
+                label="Ваш телефон" 
+                placeholder="+7 (___) ___ __-__" 
+                maxlength="22" 
+                type="tel" 
+                inputID="phone" 
+                v-on:val="(a) => {fullphone=a}" 
+            />
+            <div class="warn" v-show="password_mistake">
+                Пароль должен содержать минимум 1 маленькую и 1 большую латинские буквы, 1 цифру, длина пароля должна быть больше или равной 8
+            </div>
+            <Input 
+                label="Пароль" 
+                placeholder="************" 
+                maxlength="30" 
+                type="password" 
+                inputID="password" 
+                v-on:val="(a) => {password=a}" 
+            />
         </div>
         <Button @click="submit" :marginTop="30">Cохранить</Button>
     </div>
@@ -16,21 +45,48 @@ import Input from '../components/Input.vue';
 import Button from '../components/Button.vue';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
+import { useUserStore } from '@/stores/user.js'
 
 var name = ref('')
-var phone = ref('')
+var fullphone = ref('')
+var phone = () => { return fullphone.value.replace(/[\D]+/g, '')}
 var password = ref('')
 
+var name_mistake = ref(false)
+var phone_mistake = ref(false)
+var password_mistake = ref(false)
+
 function submit() {
-    axios({
-        url: 'http://localhost:3000/registration',
-        method: 'post',
-        data: {
-            name: name.value,
-            phone: phone.value,
-            password: password.value
-        }
-    })
+    name_mistake.value = false 
+    phone_mistake.value = false 
+    password_mistake.value = false
+    if (
+        name.value.length > 1 &&
+        phone().length >= 11 &&
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password.value)
+    ) {
+        axios({
+            url: 'http://localhost:3000/registration',
+            method: 'post',
+            data: {
+                name: name.value,
+                fullphone: fullphone.value,
+                phone: phone(),
+                password: password.value
+            }
+        }).then((res) => {
+            var user = useUserStore()
+            user.isLoggedIn = true
+            user.userID = res.body.id
+        }).catch((err) => {
+
+        })
+    } else {
+        console.log(phone(), fullphone.value.replace(/[\D]+/g, ''))
+        if (name.value.length < 2) name_mistake.value = true 
+        if (phone().length < 11) phone_mistake.value = true 
+        if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password.value)) password_mistake.value = true
+    }
 }
 onMounted(() => {
     var phoneInputs = document.querySelectorAll('input[data-tel-input=true]');
@@ -112,4 +168,13 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 @import '@/assets/style.scss';
+.warn {
+    padding: rem(14);
+    border-radius: rem(6);
+    background: rgb(194, 39, 39);
+    font-family: 'Gilroy';
+    font-weight: 500;
+    font-size: rem(16);
+    color: #FFFFFF;
+}
 </style>
