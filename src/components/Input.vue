@@ -9,7 +9,6 @@
                 :maxlength="props.maxlength" 
                 :id="props.inputID"
                 :placeholder="props.placeholder"
-                
                 v-model="value" 
                 @input="$emit('val', value)" 
             />

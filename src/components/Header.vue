@@ -27,11 +27,11 @@
                         <img src="@/assets/orders.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Мои заказы</div>
                     </div>
-                    <div class="menu-buttons-item" @click="menu=!menu">
+                    <router-link to="/deposit" class="menu-buttons-item" @click="menu=!menu">
                         <img src="@/assets/deposit.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Депозит</div>
                         <div class="menu-buttons-item-text-deposit">27 580₽</div>
-                    </div>
+                    </router-link>
                     <router-link to="/my-cards" class="menu-buttons-item" @click="menu=!menu">
                         <img src="@/assets/cards.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Привязанные карты</div>

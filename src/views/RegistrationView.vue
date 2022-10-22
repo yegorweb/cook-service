@@ -24,7 +24,7 @@
                 v-on:val="(a) => {fullphone=a}" 
             />
             <div class="warn" v-show="password_mistake">
-                Пароль должен содержать минимум 1 маленькую и 1 большую латинские буквы, 1 цифру, длина пароля должна быть больше или равной 8
+                Пароль должен содержать минимум 1 маленькую и 1 большую <strong>латинские буквы</strong>, 1 цифру, длина пароля должна быть больше или равной 8
             </div>
             <Input 
                 label="Пароль" 
@@ -46,6 +46,9 @@ import Button from '../components/Button.vue';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 import { useUserStore } from '@/stores/user.js'
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+import { useToast } from "vue-toastification";
 
 var name = ref('')
 var fullphone = ref('')
@@ -79,7 +82,22 @@ function submit() {
             user.isLoggedIn = true
             user.userID = res.body.id
         }).catch((err) => {
-
+            console.log(err)
+            const toast = useToast();
+            toast.error(err, {
+                position: "top-center",
+                timeout: 5000,
+                closeOnClick: true,
+                pauseOnFocusLoss: true,
+                pauseOnHover: true,
+                draggable: true,
+                draggablePercent: 0.6,
+                showCloseButtonOnHover: false,
+                hideProgressBar: false,
+                closeButton: "button",
+                icon: true,
+                rtl: false
+            });
         })
     } else {
         console.log(phone(), fullphone.value.replace(/[\D]+/g, ''))
