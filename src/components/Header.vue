@@ -23,10 +23,10 @@
                         <img src="@/assets/cart.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Корзина</div>
                     </router-link>
-                    <div class="menu-buttons-item" @click="menu=!menu">
+                    <router-link to="/my-orders"  class="menu-buttons-item" @click="menu=!menu">
                         <img src="@/assets/orders.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Мои заказы</div>
-                    </div>
+                    </router-link>
                     <router-link to="/deposit" class="menu-buttons-item" @click="menu=!menu">
                         <img src="@/assets/deposit.svg" alt="" class="menu-buttons-item-img">
                         <div class="menu-buttons-item-text">Депозит</div>

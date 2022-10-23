@@ -21,7 +21,13 @@ function getDeposit() {
            deposit.value.toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '.' + deposit.value.toString().split('.')[1] + '₽'
 }
 function getDepositFontSize() {
-    return document.querySelector('.container').clientWidth / getDeposit().length * 1.5
+    return document.querySelector('.container').clientWidth / getDeposit().length * 1.7
+}
+window.onresize = () => {
+    document.querySelectorAll('.deposit').forEach((el) => {
+        el.style['font-size'] = getDepositFontSize()  + 'px'
+        el.style['line-height'] = (getDepositFontSize() - 10) + 'px'
+    })
 }
 </script>
 

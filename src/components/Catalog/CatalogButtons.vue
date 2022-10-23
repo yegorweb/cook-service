@@ -1,6 +1,6 @@
 <template>
     <div class="btns container">
-        <div class="btns-top">
+        <div class="btns-top" v-if="props.inCatalog">
             <a class="btns-top-item btns-top-item-active" 
                     @click="$emit('changeMode', 'Частным клиентам')"
                     :class="{
@@ -29,7 +29,21 @@
 <script setup>
 import { ref } from "vue"
 
-var props = defineProps(['categories', 'currentCategory', 'currentMode'])
+var props = defineProps({
+    categories: {
+        required: true
+    }, 
+    currentCategory: {
+        required: true
+    }, 
+    currentMode: {
+        required: false
+    },
+    inCatalog: {
+        required: false,
+        default: true
+    }
+})
 var categories = ref(props.categories)
 </script>
 
@@ -44,6 +58,7 @@ var categories = ref(props.categories)
         flex-wrap: wrap;
         column-gap: rem(40);
         row-gap: rem(8);
+        margin-bottom: rem(24);
 
         &-item {
             font-family: 'Gilroy';
@@ -66,7 +81,6 @@ var categories = ref(props.categories)
         flex-direction: row;
         flex-wrap: wrap;
         column-gap: rem(10);
-        margin-top: rem(24);
         row-gap: rem(10);
 
         &-item {
