@@ -22,8 +22,8 @@
             <div class="middle cont">
                 <div class="title">{{item.name}}</div>
                 <div class="info">
-                    <div>{{item.info.weight}}</div>
-                    <div>{{item.info.calories}}</div>
+                    <div>{{item.info.weight}} г</div>
+                    <div>{{item.info.calories}} ккал</div>
                     <div class="price">{{item.info.price}}₽</div>
                 </div>
                 <div class="desc">{{item.description}}</div>

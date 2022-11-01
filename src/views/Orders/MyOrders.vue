@@ -12,7 +12,7 @@
                 <MyOrdersItem 
                     v-if="
                         currentMode.category == 'Все' ||
-                        (order.status == 'Текущий' &&  currentMode.category == 'Все') || 
+                        (order.status == 'Готовится' &&  currentMode.category == 'Все') || 
                         (order.status == 'Доставлен' &&  currentMode.category == 'Доставлены') || 
                         (order.status == 'Отменен' &&  currentMode.category == 'Отменены')
                     "
@@ -21,7 +21,7 @@
             </template>
             <div 
                 v-if="orders.length == 0 || 
-                    (currentMode.category == 'Все' && orders.every(order => order.status != 'Текущий')) ||
+                    (currentMode.category == 'Все' && orders.every(order => order.status != 'Готовится')) ||
                     (currentMode.category == 'Доставлены' && orders.every(order => order.status != 'Доставлен')) ||
                     (currentMode.category == 'Отменены' && orders.every(order => order.status != 'Отменен'))
                 " class="no"
@@ -37,6 +37,7 @@ import TitleAndBackVue from '@/components/TitleAndBack.vue';
 import CatalogButtons from "@/components/Catalog/CatalogButtons.vue";
 import MyOrdersItem from "@/components/Orders/MyOrdersItem.vue";
 import { reactive, ref } from 'vue';
+import axios from 'axios';
 
 var modes = ref(['Все', 'Доставлены', 'Отменены'])
 var currentMode = reactive({category: 'Все'})
@@ -44,26 +45,28 @@ function changeCategory(mode) {
     currentMode.category = mode
 }
 // NOTE   statuses:  Текущий, Отменен, Доставлен
-var orders = ref([
-    {
-        date: '8 апреля 2054',
-        id: '298456548',
-        status: 'Текущий',
-        cost: 4250
-    },
-    {
-        date: '8 апреля 2054',
-        id: '298456548',
-        status: 'Доставлен',
-        cost: 4250
-    },
-    {
-        date: '8 апреля 2054',
-        id: '298456548',
-        status: 'Отменен',
-        cost: 4250
-    }
-])
+var orders = await (await axios.get('http://localhost:3000/user-orders/?id=635692d5dc2f8a2f4a5358cb')).data
+console.log(orders)
+//ref([
+//    {
+//        date: '8 апреля 2054',
+//        id: '298456548',
+//        status: 'Текущий',
+//        cost: 4250
+//    },
+//    {
+//        date: '8 апреля 2054',
+//        id: '298456548',
+//        status: 'Доставлен',
+//        cost: 4250
+//    },
+//    {
+//        date: '8 апреля 2054',
+//        id: '298456548',
+//        status: 'Отменен',
+//        cost: 4250
+//    }
+//])
 </script>
 
 <style lang="scss" scoped>

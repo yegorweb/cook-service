@@ -77,14 +77,11 @@ function submit() {
                 phone: phone(),
                 password: password.value
             }
-        }).then((res) => {
-            var user = useUserStore()
-            user.isLoggedIn = true
-            user.userID = res.body.id
-        }).catch((err) => {
-            console.log(err)
+        })
+        .catch((err) => {
+            console.log(err.response.data.message)
             const toast = useToast();
-            toast.error(err, {
+            toast.error(err.response.data.message, {
                 position: "top-center",
                 timeout: 5000,
                 closeOnClick: true,

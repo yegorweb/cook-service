@@ -86,6 +86,7 @@ var menu = ref(false)
         height: rem(20);
         padding: rem(4);
         cursor: pointer;
+        user-select: none;
     }
     &-waBtn {
         background: #25D366;

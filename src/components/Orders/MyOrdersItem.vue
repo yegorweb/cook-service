@@ -1,18 +1,18 @@
 <template>
-    <div class="item">
+    <router-link style="text-decoration: none;" :to="'/order/?id='+order._id" class="item">
         <div class="info">
             <div class="info-title">{{order.date}}</div>
             <div class="info-desc">
-                №{{order.id}} на {{order.cost.toString().split('.').length == 1 ? 
-                order.cost.toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '₽' :
-                order.cost.toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '.' + order.cost.toString().split('.')[1] + '₽'}}
+                №{{order.number}} на {{order.total.toString().split('.').length == 1 ? 
+                order.total.toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '₽' :
+                order.total.toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '.' + order.total.toString().split('.')[1] + '₽'}}
             </div>
         </div>
         <div class="status">
             <div class="status-text">{{order.status}}</div>
             <img :src="getImage()" alt="" class="status-img">
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script setup>
@@ -22,7 +22,7 @@ var props = defineProps({order: { required: true }})
 var order = ref(props.order)
 function getImage() {
     switch (order.value.status) {
-        case 'Текущий':
+        case 'Готовится':
             return import.meta.env.VITE_API_URL + '/current-order.png'
         case 'Отменен':
             return import.meta.env.VITE_API_URL + '/canceled-order.png'

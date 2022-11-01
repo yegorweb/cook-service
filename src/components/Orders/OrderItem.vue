@@ -1,28 +1,24 @@
 <template>
-    <div class="item" @click="$emit('openFullItem', item)">
+    <div class="item">
         <div class="left">
-            <div class="img" :style="'background: #ac662d url('+path+item.imageSource+') 50% 50% no-repeat;'"></div>
+            <div class="img" :style="'background: #ac662d url('+item.imageSource+') 50% 50% no-repeat;'"></div>
             <div class="info">
                 <div class="info-title">{{item.name}}</div>
-                <div class="info-additions">{{item.additions.filter(i => i.selected).map(i => i.name).join(', ')}}</div>
+                <div class="info-additions">{{item.additions.map(i => i.name).join(', ')}}</div>
             </div>
         </div>
         <div class="right">
             <div class="amount">
-                <div @click="item.amount>1 ? item.amount-=1 : item.amount+0" class="amount-minus">-</div>
-                <div class="amount-count">{{item.amount}}</div>
-                <div @click="item.amount+=1" class="amount-plus">+</div>
+                {{item.amount}} шт.
             </div>
-            <div class="price">{{item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])}}₽</div>
+            <div class="price">{{item.price}}₽</div>
         </div>
     </div>
 </template>
 
 <script setup>
 var props = defineProps(['item'])
-var path = import.meta.env.VITE_API_URL
-var item = props.item
-console.log(item)
+var item = await props.item
 </script>
 
 <style lang="scss" scoped>
@@ -30,13 +26,12 @@ console.log(item)
 .item {
     @include adaptive-value(flex-direction, row, row, row, row, column);
     width: 100%;
-    padding: rem(22) rem(32);
     box-sizing: border-box;
     display: flex;
     gap: rem(30);
     align-items: flex-start;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.4);
+    background: transparent;
     border-radius: 20px 20px 20px 5px;
 }
 .left {
@@ -49,7 +44,11 @@ console.log(item)
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: rem(20);
+    gap: rem(35);
+
+    & > * {
+        white-space: nowrap;
+    }
 }
 .img {
     min-width: rem(60);
@@ -87,32 +86,10 @@ console.log(item)
     color: #212629;
 }
 .amount {
-    display: flex;
-    flex-direction: row;
-    border-radius: 999px;
-    gap: rem(2);
-    align-items: center;
-    border: 1px solid #FFFFFF;
-    padding: rem(1) rem(11);
-
-    & > * {
-        font-family: 'Gilroy';
-        font-style: normal;
-        font-weight: 700;
-        font-size: rem(18);
-        color: #212629;
-        padding: rem(9);
-        user-select: none;
-        border-radius: 999px;
-    } &-minus, &-plus {
-        font-weight: 400;
-        font-size: rem(26);
-        line-height: rem(12);
-        transition: all .2s;
-        cursor: pointer;
-        &:hover {
-            background: #EEEEEE;
-        }
-    }
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 300;
+    font-size: rem(16);
+    color: rgba(0, 0, 0, 0.7);
 }
 </style>

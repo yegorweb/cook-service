@@ -25,8 +25,8 @@
             <div class="middle cont">
                 <div class="title">{{item.name}}</div>
                 <div class="info">
-                    <div>{{item.info.weight}}</div>
-                    <div>{{item.info.calories}}</div>
+                    <div>{{item.info.weight}} г</div>
+                    <div>{{item.info.calories}} ккал</div>
                     <div class="price">{{item.info.price}}₽</div>
                 </div>
                 <div class="desc">{{item.description}}</div>
@@ -36,7 +36,7 @@
                         <div class="additions-item" v-for="addition in item.additions" :key="addition">
                             <div class="additions-item-name">{{addition.name}}</div>
                             <div class="additions-item-right">
-                                <div class="additions-item-price">{{(addition.price==0?'':'+ ')+ addition.price + '₽'}}</div>
+                                <div class="additions-item-price">{{(addition.price==0?'':'+ ') + addition.price + '₽'}}</div>
                                 <input class="additions-item-checkbox" type="checkbox" :disabled="addition.price==0" v-model="addition.selected">
                             </div>
                         </div>
@@ -56,18 +56,29 @@
 </template>
 
 <script setup>
+import axios from "axios"
 import { createApp, provide, reactive } from "vue"
 
-function addToCart() {
-    const app = createApp('app')
-    app.provide('item', item)
-    console.log('here', item)
+async function addToCart() {
+    await axios.post('http://localhost:3000/add-to-cart', {
+        user_id: '635692d5dc2f8a2f4a5358cb',
+        item: {
+            '_id': item._id,
+            amount: item.amount,
+            additions: item.additions
+        }
+    })
 }
 
 var props = defineProps(['item'])
 var item = props.item
 var gapSended = false
-var gap = reactive({value: document.documentElement.scrollTop + 50 < document.documentElement.offsetHeight - 1200 ? document.documentElement.scrollTop + 50 : document.documentElement.offsetHeight - 1200})
+var gap = reactive({
+    value: document.documentElement.scrollTop + 50 
+    // < document.documentElement.offsetHeight - 1200 ? 
+    //     document.documentElement.scrollTop + 50 : 
+    //     document.documentElement.offsetHeight - 1200
+})
 </script>
 
 <style lang="scss" scoped>
@@ -79,7 +90,7 @@ var gap = reactive({value: document.documentElement.scrollTop + 50 < document.do
     top: 0;
     left: 0;
     right: 0;
-    bottom: rem(-600);
+    bottom: rem(-1200);
     width: 100vw;
     backdrop-filter: blur(20px);
     z-index: 9999999;
