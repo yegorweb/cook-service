@@ -21,11 +21,12 @@ import Footer from './components/Footer.vue';
 		position: relative;
 	} body {
 		min-height: 100vh;
-		overflow-y: hidden;
-		background: #E5E5E5;
-	} html {
 		overflow-y: visible;
-	}
+		background: #E5E5E5;
+	} 
+	//html {
+	//	overflow-y: hidden;
+	//}
 
 	.overflow-disable {
 		overflow-y: hidden !important;

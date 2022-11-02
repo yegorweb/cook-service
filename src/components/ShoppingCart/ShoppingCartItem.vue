@@ -1,9 +1,9 @@
 <template>
-    <div class="item" @click="$emit('openFullItem', item)">
+    <div class="item">
         <div class="left">
             <div class="img" :style="'background: #ac662d url('+path+item.imageSource+') 50% 50% no-repeat;'"></div>
             <div class="info">
-                <div class="info-title">{{item.name}}</div>
+                <div class="info-title" @click="$emit('openFullItem', item)">{{item.name}}</div>
                 <div class="info-additions">{{item.additions.filter(i => i.selected).map(i => i.name).join(', ')}}</div>
             </div>
         </div>
@@ -13,16 +13,17 @@
                 <div class="amount-count">{{item.amount}}</div>
                 <div @click="item.amount+=1" class="amount-plus">+</div>
             </div>
-            <div class="price">{{item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])}}₽</div>
+            <div class="price">{{item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0]) + props.info.currency}}</div>
         </div>
     </div>
 </template>
 
 <script setup>
-var props = defineProps(['item'])
+import { ref } from "vue"
+
+var props = defineProps(['item', 'info'])
 var path = import.meta.env.VITE_API_URL
-var item = props.item
-console.log(item)
+var item = ref(props.item)
 </script>
 
 <style lang="scss" scoped>
@@ -71,6 +72,12 @@ console.log(item)
         font-size: rem(24);
         color: #212629;
         word-break: keep-all;
+        cursor: pointer;
+        transition: all .2s;
+
+        &:hover {
+            color: #0f0f0f;
+        }
     } &-additions {
         font-family: 'Gilroy';
         font-style: normal;

@@ -1,11 +1,19 @@
 <template>
     <div class="container">
-        <TitleAndBack :onBackClick="'home'">{{items.length}} блюд {{items.length!=0 ? items.map(item => item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0], x=0)).reverse()[0] : ''}}</TitleAndBack>
+        <TitleAndBack :onBackClick="'home'">
+            {{items.length}} 
+            блюд 
+            {{  items.length != 0 ? 
+                    items.map(item => 
+                        y += (item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0], x=0)), y=0
+                    ).reverse()[0]
+                    : ''
+            }}</TitleAndBack>
         <div class="items-cont container">
             <template v-if="items.length!=0">
-                <ShoppingCartItem v-on:openFullItem="openFullItem" v-for="item in items" :key="item" :item="item" />
-                <ShoppingCartPersons :persons="persons" />
-                <ShoppingCartDelivery :delivery="delivery" />
+                <ShoppingCartItem :info="info" v-on:openFullItem="openFullItem" v-for="item in items" :key="item" :item="item" />
+                <ShoppingCartPersons :info="info" :persons="persons" />
+                <ShoppingCartDelivery :info="info" :delivery="delivery" />
             </template>
             <div v-else class="no">Отсутсвует 😱</div>
         </div>
@@ -27,15 +35,18 @@ import CatalogItemPage from "@/components/Catalog/CatalogItemPage.vue";
 import axios from 'axios';
 
 var items = (await axios.get('http://localhost:3000/get-cart/?id=635692d5dc2f8a2f4a5358cb')).data
+console.log(items)
 var currentFullItem = reactive({active: false, item: {}})
 function openFullItem(item) {
     currentFullItem.active = true
     currentFullItem.item = item
+    document.body.style.height = '20000px'
 }
 function closeFullItem() {
     currentFullItem.active = false
-    document.querySelector('html').classList.remove('overflow-disable')
+    document.body.style.height = 'auto'
 }
+var info = (await axios.get('http://localhost:3000/info')).data
 // ref([{
 //     like: false,
 //     category: 'Закуски',
@@ -74,7 +85,7 @@ function closeFullItem() {
 // }])
 var test = ref('')
 var persons = ref(1)
-var delivery = ref(0)
+var delivery = ref(info.delivery)
 </script>
 
 <style lang="scss" scoped>

@@ -1,15 +1,14 @@
 <template>
     <div class="item">
         <div class="title">Доставка</div>
-        <div class="right">{{delivery}}₽</div>
+        <div class="right">{{props.info.delivery_price + props.info.currency}}</div>
     </div>
 </template>
 
 <script setup>
 import { ref } from "vue"
 
-var props = defineProps(['delivery'])
-var delivery = ref(props.delivery)
+var props = defineProps(['info'])
 </script>
 
 <style lang="scss" scoped>

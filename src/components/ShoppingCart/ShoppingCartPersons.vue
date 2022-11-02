@@ -7,16 +7,20 @@
                 <div class="amount-count">{{persons}}</div>
                 <div @click="persons+=1" class="amount-plus">+</div>
             </div>
-            <div class="price">{{persons}}</div><!-- {{persons * item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])}}₽</div> -->
+            <div class="price">{{(persons * person_price) + currency}}</div><!-- {{persons * item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])}}₽</div> -->
         </div>
     </div>
 </template>
 
 <script setup>
+import axios from "axios"
 import { ref } from "vue"
 
-var props = defineProps(['persons'])
+var props = defineProps(['persons', 'info'])
 var persons = ref(props.persons)
+var information = ref(props.info)
+var person_price = information.value.person_price
+var currency = information.value.currency
 </script>
 
 <style lang="scss" scoped>

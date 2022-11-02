@@ -1,7 +1,7 @@
 <template>
     <div class="item">
         <div style="display: flex; flex-direction: column; width: 100%;">
-            <div class="top">
+            <div class="top" :style="'background: #ac662d url('+path+item.imageSource+') 50% 50% no-repeat;'">
                 <div class="cont top-container">
                     <div class="like" @click="item.like=!item.like">
                         <svg v-if="item.like" class="like" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,6 +42,7 @@
 
 <script setup>
 var props = defineProps(['item'])
+var path = import.meta.env.VITE_API_URL
 var item = props.item
 var img = item.imageSource
 </script>
@@ -68,7 +69,6 @@ var img = item.imageSource
     display: flex;
     align-items: center;
     background-size: cover !important;
-    background: #ac662d url(@/assets/item-image.jpg) 50% 50% no-repeat;
     position: relative;
     user-select: none;
 }

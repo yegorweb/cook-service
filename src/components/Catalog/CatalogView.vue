@@ -150,9 +150,10 @@ function changeCategory(category) {
 function openFullItem(item) {
     currentFullItem.active = true
     currentFullItem.item = item
+    document.body.style.height = '20000px'
 }
 function closeFullItem() {
     currentFullItem.active = false
-    document.querySelector('html').classList.remove('overflow-disable')
+    document.body.style.height = 'auto'
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <div class="item" id="full-item" :style="'margin-top:' + gap.value + 'px;'">
-            <div class="top">
+            <div class="top" :style="'background: #ac662d url('+path+item.imageSource+') 50% 50% no-repeat;'">
                 <div class="cont top-container">
                     <div class="top-topBar">
                         <div class="like" @click="item.like=!item.like">
@@ -59,6 +59,7 @@
 import axios from "axios"
 import { createApp, provide, reactive } from "vue"
 
+var path = import.meta.env.VITE_API_URL
 async function addToCart() {
     await axios.post('http://localhost:3000/add-to-cart', {
         user_id: '635692d5dc2f8a2f4a5358cb',
@@ -90,7 +91,7 @@ var gap = reactive({
     top: 0;
     left: 0;
     right: 0;
-    bottom: rem(-1200);
+    bottom: 0;
     width: 100vw;
     backdrop-filter: blur(20px);
     z-index: 9999999;
@@ -115,7 +116,6 @@ var gap = reactive({
     display: flex;
     align-items: center;
     background-size: cover !important;
-    background: #ac662d url(@/assets/item-image.jpg) 50% 50% no-repeat;
     position: relative;
     user-select: none;
 
