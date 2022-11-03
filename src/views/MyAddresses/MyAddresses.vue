@@ -1,9 +1,10 @@
 <template>
     <div class="container">
         <TitleAndBack onBackClick="back">Мои адреса</TitleAndBack>
-        <div class="items">
+        <div v-if="addresses.length != 0" class="items">
             <AddressItem v-for="address in addresses" :key="address" :address="address" />
         </div>
+        <div v-else class="no">Отсутсвуют 😱</div>
         <router-link style="text-decoration: none;" to="/create-address"><Button :marginTop="30">Добавить адрес</Button></router-link>
     </div>
 </template>

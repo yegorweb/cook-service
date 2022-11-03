@@ -28,6 +28,14 @@ import Footer from './components/Footer.vue';
 	//	overflow-y: hidden;
 	//}
 
+	.no {
+		font-family: 'Gilroy';
+		font-weight: 700;
+		font-size: rem(22);
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 	.overflow-disable {
 		overflow-y: hidden !important;
 	}

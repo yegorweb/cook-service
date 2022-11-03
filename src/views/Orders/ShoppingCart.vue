@@ -15,7 +15,7 @@
                 <ShoppingCartPersons :info="info" :persons="persons" />
                 <ShoppingCartDelivery :info="info" :delivery="delivery" />
             </template>
-            <div v-else class="no">Отсутсвует 😱</div>
+            <div v-else class="no">Отсутсвуют 😱</div>
         </div>
         <CatalogItemPage 
             v-on:closeFullItem="closeFullItem" 
@@ -33,18 +33,32 @@ import ShoppingCartPersons from '@/components/ShoppingCart/ShoppingCartPersons.v
 import ShoppingCartDelivery from '@/components/ShoppingCart/ShoppingCartDelivery.vue';
 import CatalogItemPage from "@/components/Catalog/CatalogItemPage.vue";
 import axios from 'axios';
+import { showToast, showToastFromServerResponse } from '../../assets/show-toast';
 
-var items = (await axios.get('http://localhost:3000/get-cart/?id=635692d5dc2f8a2f4a5358cb')).data
+var items 
+axios.get('http://localhost:3000/get-cart/?id=635692d5dc2f8a2f4a5358cb')
+    .then((res) => {
+        items = res.data
+    })
+    .catch((err) => {
+        if (err.response) {
+            showToastFromServerResponse(err.response.data)
+        } else if (err.request) {
+            showToastFromServerResponse(err.request)
+        } else {
+            showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
+        }
+    })
 console.log(items)
 var currentFullItem = reactive({active: false, item: {}})
 function openFullItem(item) {
     currentFullItem.active = true
     currentFullItem.item = item
-    document.body.style.height = '20000px'
+    document.body.style.paddingBottom = '2000px'
 }
 function closeFullItem() {
     currentFullItem.active = false
-    document.body.style.height = 'auto'
+    document.body.style.paddingBottom = '0px'
 }
 var info = (await axios.get('http://localhost:3000/info')).data
 // ref([{

@@ -150,10 +150,10 @@ function changeCategory(category) {
 function openFullItem(item) {
     currentFullItem.active = true
     currentFullItem.item = item
-    document.body.style.height = '20000px'
+    document.body.style.paddingBottom = '2000px'
 }
 function closeFullItem() {
     currentFullItem.active = false
-    document.body.style.height = 'auto'
+    document.body.style.paddingBottom = '0px'
 }
 </script>

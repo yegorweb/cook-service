@@ -58,8 +58,10 @@
 <script setup>
 import axios from "axios"
 import { createApp, provide, reactive } from "vue"
+import {showToast, showToastFromServerResponse} from '../../assets/show-toast'
 
 var path = import.meta.env.VITE_API_URL
+var emit = defineEmits(['closeFullItem'])
 async function addToCart() {
     await axios.post('http://localhost:3000/add-to-cart', {
         user_id: '635692d5dc2f8a2f4a5358cb',
@@ -67,6 +69,18 @@ async function addToCart() {
             '_id': item._id,
             amount: item.amount,
             additions: item.additions
+        }
+    }).then((res) => {
+        showToastFromServerResponse(res.data)
+        if (res.data.type == 'success') {
+            emit('closeFullItem')
+        }
+    }).catch((err) => {
+        if (err.response) {
+            showToastFromServerResponse(err.response.data)
+        }
+        else {
+            showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
         }
     })
 }
@@ -94,7 +108,7 @@ var gap = reactive({
     bottom: 0;
     width: 100vw;
     backdrop-filter: blur(20px);
-    z-index: 9999999;
+    z-index: 999;
     transition: all .15s;
     overflow: hidden !important;
 }
