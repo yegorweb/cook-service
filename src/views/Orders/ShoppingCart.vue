@@ -2,13 +2,14 @@
     <div class="container">
         <TitleAndBack :onBackClick="'home'">
             {{items.length}} 
-            блюд 
-            {{  items.length != 0 ? 
-                    items.map(item => 
-                        y += (item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0], x=0)), y=0
-                    ).reverse()[0]
+            блюд{{getEnding(items.length)}}
+            {{ items.length != 0 ? 
+                    ' на ' + items.map(item => 
+                        y += (item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])), y=0
+                    ).reverse()[0] + info.currency
                     : ''
-            }}</TitleAndBack>
+            }}
+        </TitleAndBack>
         <div class="items-cont container">
             <template v-if="items.length!=0">
                 <ShoppingCartItem :info="info" v-on:openFullItem="openFullItem" v-for="item in items" :key="item" :item="item" />
@@ -17,6 +18,7 @@
             </template>
             <div v-else class="no">Отсутсвуют 😱</div>
         </div>
+        <router-link to="/send-order" style="text-decoration: none;"><Button bg="#25D366" color="#FFFFFF" :marginTop="30">Оформить заказ</Button></router-link>
         <CatalogItemPage 
             v-on:closeFullItem="closeFullItem" 
             v-if="currentFullItem.active" 
@@ -28,6 +30,7 @@
 <script setup>
 import TitleAndBack from '@/components/TitleAndBack.vue';
 import { reactive, ref } from 'vue';
+import Button from '@/components/Button.vue';
 import ShoppingCartItem from '@/components/ShoppingCart/ShoppingCartItem.vue';
 import ShoppingCartPersons from '@/components/ShoppingCart/ShoppingCartPersons.vue';
 import ShoppingCartDelivery from '@/components/ShoppingCart/ShoppingCartDelivery.vue';
@@ -35,22 +38,43 @@ import CatalogItemPage from "@/components/Catalog/CatalogItemPage.vue";
 import axios from 'axios';
 import { showToast, showToastFromServerResponse } from '../../assets/show-toast';
 
-var items 
-axios.get('http://localhost:3000/get-cart/?id=635692d5dc2f8a2f4a5358cb')
+var items
+await axios.get('http://localhost:3000/get-cart/?id=635692d5dc2f8a2f4a5358cb')
     .then((res) => {
         items = res.data
     })
     .catch((err) => {
         if (err.response) {
             showToastFromServerResponse(err.response.data)
-        } else if (err.request) {
-            showToastFromServerResponse(err.request)
+        // } else if (err.request) {
+        //     showToastFromServerResponse(err.request)
         } else {
             showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
         }
     })
+var info
+await axios.get('http://localhost:3000/info')
+    .then((res) => {
+        info = res.data
+    })
+    .catch((err) => {
+        if (err.response) {
+            showToastFromServerResponse(err.response.data)
+        // } else if (err.request) {
+        //     showToastFromServerResponse(err.request)
+        } else {
+            showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
+        }
+    })
+
 console.log(items)
 var currentFullItem = reactive({active: false, item: {}})
+function getEnding(number) {
+    let lastDigit = number % 10
+    if (lastDigit == 0 || lastDigit == 5 || lastDigit == 6 || lastDigit == 7 || lastDigit == 8 || lastDigit == 9) return ''
+    if (lastDigit == 1) return 'о'
+    if (lastDigit == 2 || lastDigit == 3 || lastDigit == 4) return 'а'
+}
 function openFullItem(item) {
     currentFullItem.active = true
     currentFullItem.item = item
@@ -60,7 +84,6 @@ function closeFullItem() {
     currentFullItem.active = false
     document.body.style.paddingBottom = '0px'
 }
-var info = (await axios.get('http://localhost:3000/info')).data
 // ref([{
 //     like: false,
 //     category: 'Закуски',

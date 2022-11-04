@@ -22,7 +22,7 @@ import Footer from './components/Footer.vue';
 	} body {
 		min-height: 100vh;
 		overflow-y: visible;
-		background: #E5E5E5;
+		background: #E5E5E5 !important;
 	} 
 	//html {
 	//	overflow-y: hidden;

@@ -21,6 +21,9 @@ div {
     justify-content: flex-start;
     box-sizing: border-box;
     gap: rem(5);
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
 }
 label {
     font-family: 'Gilroy';

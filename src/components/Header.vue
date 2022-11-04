@@ -75,7 +75,7 @@ var menu = ref(false)
     margin-bottom: rem(20);
     background: #E9E9E9;
     box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.05), 60px 60px 80px rgba(0, 0, 0, 0.35);
-    border-radius: rem(40) rem(40) rem(40)rem(5);
+    border-radius: rem(40) rem(40) rem(40) rem(5);
     padding: rem(20);
     max-width: rem(320);
     min-width: rem(320);

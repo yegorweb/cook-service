@@ -28,6 +28,11 @@ const router = createRouter({
       component: () => import('../views/Orders/Order.vue')
     },
     {
+      path: '/send-order',
+      name: 'send-order',
+      component: () => import('../views/Orders/SendOrder.vue')
+    },
+    {
       path: '/my-orders',
       name: 'my-orders',
       component: () => import('../views/Orders/MyOrders.vue')

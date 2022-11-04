@@ -27,8 +27,20 @@ import CatalogItems from "@/components/Catalog/CatalogItems.vue";
 import CatalogCorporate from "@/components/Catalog/CatalogCorporate.vue";
 import CatalogItemPage from "@/components/Catalog/CatalogItemPage.vue";
 import axios from "axios";
+import { showToast, showToastFromServerResponse } from "../../assets/show-toast";
 
-var items = (await axios.get('http://localhost:3000/items')).data
+var items 
+await axios.get('http://localhost:3000/items')
+    .then((res) => {
+        items = res.data
+    })
+    .catch((err) => {
+        if (err.response) {
+            showToastFromServerResponse(err.response.data)
+        } else {
+            showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
+        }
+    })
 items.forEach((el) => {
     el.amount = 1
     el.additions.forEach((el) => {
