@@ -7,7 +7,7 @@
             <TextArea label="Комментарий (если есть)" placeholder="Например: Оставляйте под дверью" v-on:val="(a) => {comment=a}" />
         </div>
         <div class="buttons">
-            <Button>Cохранить</Button>
+            <Button @click="addAddress">Cохранить</Button>
             <div class="delete">Удалить адрес</div>
         </div>
     </div>
@@ -19,7 +19,35 @@ import TitleAndBack from '@/components/TitleAndBack.vue';
 import TextArea from '@/components/TextArea.vue';
 import { ref } from 'vue';
 import Button from '@/components/Button.vue';
+import axios from 'axios';
+import { showToast, showToastFromServerResponse } from '../../assets/show-toast';
+import { useRoute } from 'vue-router'
 
+const router = useRoute()
+async function addAddress() {
+    if (name.value.length < 2 && address.value < 10) {
+        showToast('Заполните все поля для создания. Возможно вы указали мало данных.', 'error')
+        return
+    }
+    await axios.post('http://localhost:3000/add-address', {
+        user_id: '635692d5dc2f8a2f4a5358cb',
+        address: {
+            name: name.value,
+            address: address.value,
+            comment: comment.value
+        }
+    }).then((res) => {
+        showToastFromServerResponse(res.data)
+        router.path = '/my-addresses'
+    }).catch((err) => {
+        if (err.response) {
+            showToastFromServerResponse(err.response.data)
+        }
+        else {
+            showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
+        }
+    })
+}
 var name = ref('')
 var address = ref('')
 var comment = ref('')

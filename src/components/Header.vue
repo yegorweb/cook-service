@@ -10,13 +10,13 @@
                     <div class="wa-text">WhatsApp</div>
                 </a>
                 <button class="btn button">Заказать 1 блюдо за 430₽</button>
-                <button class="account button" @click="menu=!menu">
+                <button class="account button" id="menuButton" @click="menu=!menu">
                     <img src="@/assets/account.svg" alt="" class="account-img">
                 </button>
             </div>
         </div>
         <div class="container menu-cont" v-show="menu">
-            <div class="menu">
+            <div class="menu" id="menu">
                 <img src="@/assets/close-menu.svg" alt="" class="menu-closeBtn" @click="menu=!menu">
                 <div class="menu-buttons">
                     <router-link to="/cart" class="menu-buttons-item" @click="menu=!menu">
@@ -60,9 +60,20 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 var menu = ref(false)
+onMounted(() => {
+    document.addEventListener('click', (event) => {
+        let element = document.getElementById('menu')
+        let menuButton = document.getElementById('menuButton')
+        let withinBoundaries = event.composedPath().includes(element)
+        let withinBoundariesInMenuButton = event.composedPath().includes(menuButton)
+	    if (!withinBoundariesInMenuButton && !withinBoundaries) {
+            menu.value = false
+        }
+    })
+})
 </script>
 
 <style lang="scss" scoped>

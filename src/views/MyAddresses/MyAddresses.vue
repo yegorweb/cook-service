@@ -13,15 +13,24 @@
 import TitleAndBack from '@/components/TitleAndBack.vue';
 import AddressItem from '@/components/AddressItem.vue';
 import Button from '@/components/Button.vue';
+import axios from 'axios';
+import { ref } from 'vue';
+import { showToast, showToastFromServerResponse } from '../../assets/show-toast';
 
-var addresses = [{
-    name: 'Дом',
-    address: 'Меркурий Сити Тауэр, кв./офис 62, этаж 25'
-},
-{
-    name: 'Работа',
-    address: 'Меркурий Сити Тауэр, кв./офис 62, этаж 25'
-}]
+var addresses
+await axios.get('http://localhost:3000/get-addresses/?id=635692d5dc2f8a2f4a5358cb')
+    .then((res) => {
+        addresses = ref(res.data)
+    })
+    .catch((err) => {
+        if (err.response) {
+            showToastFromServerResponse(err.response.data)
+        // } else if (err.request) {
+        //     showToastFromServerResponse(err.request)
+        } else {
+            showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
+        }
+    })
 </script>
 
 <style lang="scss" scoped>

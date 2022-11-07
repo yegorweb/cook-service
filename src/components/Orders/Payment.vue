@@ -1,12 +1,12 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <div :class="{'box': true, 'box-active': active}">
+    <div id="payment" :class="{'box': true, 'box-active': active}">
         <div @click="active=!active" id="item" class="item" align="center" justify="space-between">
             <img :src="current_option.image" alt="" class="item-img">
             <div class="item-text">{{current_option.text}}</div>
         </div>
         <div v-if="active" :style="'top: '+getListTop()+';'" class="list">
-            <div v-for="item in list" :key="item" @click="current_option=item; active=!active" class="list-item">
+            <div v-for="item in list" :key="item" @click="current_option = item; active = !active" class="list-item">
                 <img :src="item.image" alt="" class="list-item-img" />
                 <div class="list-item-text">
                     <div class="list-item-text-left">{{item.text}}</div>
@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 var active = ref(false)
 var path = import.meta.env.VITE_API_URL
@@ -49,14 +49,24 @@ var list = ref([
         text_right: ''
     },
 ])
-var current_option = ref({image: path + '/card-payment.svg', text: 'Картой курьеру'})
+var current_option = ref({image: path + '/payment.svg', text: 'Оплата'})
 function getListTop() {
     return (document.getElementById('item').clientHeight - 13) / 16 + 'rem'
 }
+onMounted(() => {
+    document.addEventListener('click', (event) => {
+        let element = document.getElementById('payment')
+        let withinBoundaries = event.composedPath().includes(element)
+	    if (!withinBoundaries) active.value = false
+    })
+})
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/style';
+* {
+    user-select: none;
+}
 .box {
     position: relative;
     border-radius: rem(13);

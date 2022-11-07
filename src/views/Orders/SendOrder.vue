@@ -2,7 +2,7 @@
     <div class="container">
         <TitleAndBack onBackClick="back">Оформление заказа</TitleAndBack>
         <CatalogButtons
-            :categories="modes" 
+            :categories="addresses" 
             :currentCategory="currentMode" 
             :inCatalog="false"
             @changeCategory="changeCategory" 
@@ -22,8 +22,24 @@ import CatalogButtons from "@/components/Catalog/CatalogButtons.vue";
 import TextArea from '@/components/TextArea.vue'
 import Payment from '../../components/Orders/Payment.vue';
 import { reactive, ref } from 'vue';
+import axios from 'axios';
+import { showToast, showToastFromServerResponse } from '../../assets/show-toast';
 
-var modes = ref(['Все', 'Доставлены', 'Отменены'])
+var addresses
+await axios.get('http://localhost:3000/get-addresses/?id=635692d5dc2f8a2f4a5358cb')
+    .then((res) => {
+        addresses = ref(res.data)
+    })
+    .catch((err) => {
+        if (err.response) {
+            showToastFromServerResponse(err.response.data)
+        // } else if (err.request) {
+        //     showToastFromServerResponse(err.request)
+        } else {
+            showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
+        }
+    })
+console.log(addresses)
 var currentMode = reactive({category: 'Все'})
 var comment = ref('')
 function changeCategory(mode) {
