@@ -23,7 +23,7 @@ import { ref } from "vue";
 var value = ref('')
 var visible = ref(false)
 function getURL() {
-    return visible.value ? import.meta.env.VITE_API_URL + '/visible.png' : import.meta.env.VITE_API_URL + '/invisible.png'
+    return visible.value ? import.meta.env.VITE_BASE_URL + '/visible.png' : import.meta.env.VITE_BASE_URL + '/invisible.png'
 }
 function changeVisibile() {
     if (visible.value) {

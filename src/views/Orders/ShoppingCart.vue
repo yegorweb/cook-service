@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <TitleAndBack :onBackClick="'home'">
-            {{items.length}} 
-            блюд{{getEnding(items.length)}}
-            {{ items.length != 0 ? 
-                    ' на ' + items.map(item => 
+            {{cart.length}} 
+            блюд{{getEnding(cart.length)}}
+            {{ cart.length != 0 ? 
+                    ' на ' + cart.map(item => 
                         y += (item.amount * (item.info.price + item.additions.map(i => i.selected ? x+=i.price : x+=0, x=0).reverse()[0])), y=0
                     ).reverse()[0] + info.currency
                     : ''
@@ -12,7 +12,7 @@
         </TitleAndBack>
         <div class="items-cont container">
             <template v-if="items.length!=0">
-                <ShoppingCartItem :info="info" v-on:openFullItem="openFullItem" v-for="item in items" :key="item" :item="item" />
+                <ShoppingCartItem :info="info" v-on:openFullItem="openFullItem" v-for="item in cart" :key="item" :item="item" />
                 <ShoppingCartPersons :info="info" :persons="persons" />
                 <ShoppingCartDelivery :info="info" :delivery="delivery" />
             </template>
@@ -36,38 +36,33 @@ import ShoppingCartPersons from '@/components/ShoppingCart/ShoppingCartPersons.v
 import ShoppingCartDelivery from '@/components/ShoppingCart/ShoppingCartDelivery.vue';
 import CatalogItemPage from "@/components/Catalog/CatalogItemPage.vue";
 import axios from 'axios';
-import { showToast, showToastFromServerResponse } from '../../assets/show-toast';
+import { doCatch } from '../../service/doCatch';
+import { useCartStore } from '../../stores/cartStore';
 
 var items
-await axios.get('http://localhost:3000/get-cart/?id=635692d5dc2f8a2f4a5358cb')
+await axios.get('http://localhost:3000/items')
     .then((res) => {
         items = res.data
-    })
-    .catch((err) => {
-        if (err.response) {
-            showToastFromServerResponse(err.response.data)
-        // } else if (err.request) {
-        //     showToastFromServerResponse(err.request)
-        } else {
-            showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
-        }
-    })
+    }).catch(doCatch)
 var info
 await axios.get('http://localhost:3000/info')
     .then((res) => {
         info = res.data
-    })
-    .catch((err) => {
-        if (err.response) {
-            showToastFromServerResponse(err.response.data)
-        // } else if (err.request) {
-        //     showToastFromServerResponse(err.request)
-        } else {
-            showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
-        }
-    })
+    }).catch(doCatch)
 
 console.log(items)
+
+var cartStore = useCartStore()
+var cartFromStore = cartStore.getCart()
+
+var cart = []
+cartFromStore.forEach(cart_item => {
+    let item = items.find(el => cart_item._id === el._id)
+    console.log(item)
+    cart.push(item)
+})
+console.log(cart)
+
 var currentFullItem = reactive({active: false, item: {}})
 function getEnding(number) {
     let lastDigit = number % 10

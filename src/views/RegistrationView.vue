@@ -45,7 +45,7 @@ import Input from '../components/Input.vue';
 import Button from '../components/Button.vue';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
-import { useUserStore } from '@/stores/user.js'
+import { useUserStore } from '@/stores/userStore.js'
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import { useToast } from "vue-toastification";
@@ -59,6 +59,8 @@ var name_mistake = ref(false)
 var phone_mistake = ref(false)
 var password_mistake = ref(false)
 
+var userStore = useUserStore()
+
 function submit() {
     name_mistake.value = false 
     phone_mistake.value = false 
@@ -68,33 +70,11 @@ function submit() {
         phone().length >= 11 &&
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password.value)
     ) {
-        axios({
-            url: 'http://localhost:3000/registration',
-            method: 'post',
-            data: {
-                name: name.value,
-                fullphone: fullphone.value,
-                phone: phone(),
-                password: password.value
-            }
-        })
-        .catch((err) => {
-            console.log(err.response.data.message)
-            const toast = useToast();
-            toast.error(err.response.data.message, {
-                position: "top-center",
-                timeout: 5000,
-                closeOnClick: true,
-                pauseOnFocusLoss: true,
-                pauseOnHover: true,
-                draggable: true,
-                draggablePercent: 0.6,
-                showCloseButtonOnHover: false,
-                hideProgressBar: false,
-                closeButton: "button",
-                icon: true,
-                rtl: false
-            });
+        userStore.registration({
+            name: name.value,
+            fullphone: fullphone.value,
+            phone: phone(),
+            password: password.value
         })
     } else {
         console.log(phone(), fullphone.value.replace(/[\D]+/g, ''))

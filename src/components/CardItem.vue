@@ -11,13 +11,13 @@ var card = props.card
 function getImage() {
     switch (card.type) {
         case 'mastercard':
-            return import.meta.env.VITE_API_URL + '/mastercard.svg'
+            return import.meta.env.VITE_BASE_URL + '/mastercard.svg'
         case 'visa':
-            return import.meta.env.VITE_API_URL + '/visa.svg'
+            return import.meta.env.VITE_BASE_URL + '/visa.svg'
         case 'mir':
-            return import.meta.env.VITE_API_URL + '/mir.png'
+            return import.meta.env.VITE_BASE_URL + '/mir.png'
         default:
-            return import.meta.env.VITE_API_URL + '/card.png'
+            return import.meta.env.VITE_BASE_URL + '/card.png'
     }
 }
 </script>

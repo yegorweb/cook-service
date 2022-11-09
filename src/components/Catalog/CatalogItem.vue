@@ -42,7 +42,7 @@
 
 <script setup>
 var props = defineProps(['item'])
-var path = import.meta.env.VITE_API_URL
+var path = import.meta.env.VITE_BASE_URL
 var item = props.item
 var img = item.imageSource
 </script>

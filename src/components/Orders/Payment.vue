@@ -21,7 +21,7 @@
 import { onMounted, ref } from "vue";
 
 var active = ref(false)
-var path = import.meta.env.VITE_API_URL
+var path = import.meta.env.VITE_BASE_URL
 var list = ref([
     {
         image: path + '/deposit-white.svg',

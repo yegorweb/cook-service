@@ -22,7 +22,7 @@
 import { ref } from "vue"
 
 var props = defineProps(['item', 'info'])
-var path = import.meta.env.VITE_API_URL
+var path = import.meta.env.VITE_BASE_URL
 var item = ref(props.item)
 </script>
 

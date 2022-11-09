@@ -23,11 +23,11 @@ var order = ref(props.order)
 function getImage() {
     switch (order.value.status) {
         case 'Готовится':
-            return import.meta.env.VITE_API_URL + '/current-order.png'
+            return import.meta.env.VITE_BASE_URL + '/current-order.png'
         case 'Отменен':
-            return import.meta.env.VITE_API_URL + '/canceled-order.png'
+            return import.meta.env.VITE_BASE_URL + '/canceled-order.png'
         case 'Доставлен':
-            return import.meta.env.VITE_API_URL + '/delivered-order.png'
+            return import.meta.env.VITE_BASE_URL + '/delivered-order.png'
     }
 }
 </script>

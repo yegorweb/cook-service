@@ -113,13 +113,13 @@ function getLineCSS() {
 function getSrc(item) {
     switch (item) {
         case 'Оформлен':
-            return import.meta.env.VITE_API_URL + '/framed-order.svg' 
+            return import.meta.env.VITE_BASE_URL + '/framed-order.svg' 
         case 'Готовится':
-            return import.meta.env.VITE_API_URL + '/cooking-order.svg'
+            return import.meta.env.VITE_BASE_URL + '/cooking-order.svg'
         case 'В доставке':
-            return import.meta.env.VITE_API_URL + '/in-delivery-order.svg'
+            return import.meta.env.VITE_BASE_URL + '/in-delivery-order.svg'
         case 'Готово':
-            return import.meta.env.VITE_API_URL + '/done-order.svg'
+            return import.meta.env.VITE_BASE_URL + '/done-order.svg'
     }
 }
 function getFontSize() {
