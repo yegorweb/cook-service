@@ -56,9 +56,7 @@
 </template>
 
 <script setup>
-import axios from "axios"
-import { createApp, provide, reactive } from "vue"
-import {showToast, showToastFromServerResponse} from '../../assets/show-toast'
+import { reactive } from "vue"
 import { useCartStore } from "../../stores/cartStore";
 
 var path = import.meta.env.VITE_BASE_URL
@@ -71,26 +69,7 @@ function addToCart() {
         amount: item.amount,
         additions: item.additions
     })
-    // await axios.post('http://localhost:3000/add-to-cart', {
-    //     user_id: '635692d5dc2f8a2f4a5358cb',
-    //     item: {
-    //         '_id': item._id,
-    //         amount: item.amount,
-    //         additions: item.additions
-    //     }
-    // }).then((res) => {
-    //     showToastFromServerResponse(res.data)
-    //     if (res.data.type == 'success') {
-    //         emit('closeFullItem')
-    //     }
-    // }).catch((err) => {
-    //     if (err.response) {
-    //         showToastFromServerResponse(err.response.data)
-    //     }
-    //     else {
-    //         showToast('Нет соединения с сервером. Проверьте подключение к интернету.', 'error')
-    //     }
-    // })
+    emit('closeFullItem')
 }
 
 var props = defineProps(['item'])

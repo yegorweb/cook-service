@@ -35,35 +35,32 @@ import ShoppingCartItem from '@/components/ShoppingCart/ShoppingCartItem.vue';
 import ShoppingCartPersons from '@/components/ShoppingCart/ShoppingCartPersons.vue';
 import ShoppingCartDelivery from '@/components/ShoppingCart/ShoppingCartDelivery.vue';
 import CatalogItemPage from "@/components/Catalog/CatalogItemPage.vue";
-import axios from 'axios';
-import { doCatch } from '../../service/doCatch';
 import { useCartStore } from '../../stores/cartStore';
+import { useItemsStore } from '../../stores/itemsStore';
 
-var items
-await axios.get('http://localhost:3000/items')
-    .then((res) => {
-        items = res.data
-    }).catch(doCatch)
-var info
-await axios.get('http://localhost:3000/info')
-    .then((res) => {
-        info = res.data
-    }).catch(doCatch)
+var itemsStore = useItemsStore()
+var cartStore = useCartStore()
+
+// получаем блюда и инфу
+var cartFromStore = cartStore.getCart()
+var items = await itemsStore.getItems()
+var info = await itemsStore.getInfo()
 
 console.log(items)
+console.log(cartFromStore)
 
-var cartStore = useCartStore()
-var cartFromStore = cartStore.getCart()
+var cart = ref([]) // будет использваться
 
-var cart = []
+// находим блюда из корзины
 cartFromStore.forEach(cart_item => {
-    let item = items.find(el => cart_item._id === el._id)
-    console.log(item)
-    cart.push(item)
+    let item = Object.assign({}, items.find(el => cart_item._id === el._id), cart_item)
+    cart.value.push(item)
 })
-console.log(cart)
+
+console.log(cart.value)
 
 var currentFullItem = reactive({active: false, item: {}})
+// получить окончание по цифре
 function getEnding(number) {
     let lastDigit = number % 10
     if (lastDigit == 0 || lastDigit == 5 || lastDigit == 6 || lastDigit == 7 || lastDigit == 8 || lastDigit == 9) return ''
