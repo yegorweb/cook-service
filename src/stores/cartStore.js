@@ -1,32 +1,22 @@
 import { defineStore } from "pinia";
 import { showToast } from "../assets/show-toast";
+import { ref } from "vue";
+import _ from "lodash";
 
-// var cart = localStorage.getItem('cart') ? Object.assign([], JSON.parse(localStorage.getItem('cart'))) : []
-// // парсим каждый элемент массива
-// for (let index = 0; index < cart.length; index++) {
-//     cart[index] = JSON.parse(cart[index])
-// }
-
-
-export const useCartStore = defineStore('cartStore', {
-    state: () => ({
-        cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
-    }),
-    actions: {
-        getCart() {
-            console.log(this.cart)
-            console.log(typeof this.cart)
-            return this.cart
-        },
-        add(item) {
-            console.log(this.cart.includes(item))
-            if (this.cart.includes(item)) {
-                showToast('Такое в вашей корзине уже лежит', 'error')
-                return
-            }
-            this.cart.push(item)
-            localStorage.setItem('cart', JSON.stringify(this.cart))
-            showToast('Блюдо добавлено в корзину', 'success')
-        }
+export const useCartStore = defineStore('cartStore', () => {
+    var cart = ref(localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [])
+    function getCart() {
+        return cart.value
     }
+    function add(item) {
+        if (cart.value.map(element => _.isEqual(element, item))) {
+            showToast('Такое в вашей корзине уже лежит', 'error')
+            return
+        }
+        cart.value.push(item)
+        localStorage.setItem('cart', JSON.stringify(cart.value))
+        showToast('Блюдо добавлено в корзину', 'success')
+    }
+
+    return {cart, getCart, add}
 })
