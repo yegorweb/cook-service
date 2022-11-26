@@ -81,11 +81,16 @@ import TitleAndBack from "../../components/TitleAndBack.vue";
 import Button from '@/components/Button.vue';
 import axios from "axios";
 import { onMounted } from "vue";
+import { useInfoStore } from '../../stores/infoStore';
+
+const infoStore = useInfoStore()
 
 var params = (new URL(document.location)).searchParams; 
 var id = params.get('id')
 // /?id=63569dd1d2775e9c452c21b6
-var order = (await axios.get('http://localhost:3000/order/?id='+id)).data
+
+var order = await infoStore.getItem(id)
+
 async function getItem(params) {
     let item = (await axios.get('http://localhost:3000/item/?id=' + params.id)).data
     item.amount = params.amount

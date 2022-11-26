@@ -18,8 +18,15 @@
         </div>
         <div class="btns-bottom">
             <template v-for="category in categories" :key="category">
-                <a class="btns-bottom-item" @click="$emit('changeCategory', category)" :class="{'btns-bottom-item-selected': props.currentCategory.category==category, 'btns-bottom-item-not-selected': props.currentCategory.category!=category}">
-                    {{category}}
+                <a 
+                    class="btns-bottom-item" 
+                    @click="$emit('changeCategory', category)" 
+                    :class="{
+                        'btns-bottom-item-selected': props.currentCategory.category==(props.inSendOrderPage ? category.name : category), 
+                        'btns-bottom-item-not-selected': props.currentCategory.category!=(props.inSendOrderPage ? category.name : category)
+                    }"
+                >
+                    {{props.inSendOrderPage ? category.name : category}}
                 </a>
             </template>
         </div>
@@ -42,6 +49,10 @@ var props = defineProps({
     inCatalog: {
         required: false,
         default: true
+    },
+    inSendOrderPage: {
+        required: false,
+        default: false
     }
 })
 var categories = ref(props.categories)

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { defineStore } from 'pinia'
 import { doCatch } from '../service/doCatch'
 
-export const useItemsStore = defineStore('itemsStore', {
+export const useInfoStore = defineStore('infoStore', {
 	actions: {
         async getItems() {
             let items
@@ -11,6 +11,14 @@ export const useItemsStore = defineStore('itemsStore', {
                     items = res.data
                 }).catch(doCatch)
             return items
+        },
+        async getItem(id) {
+            let item
+            await axios.get(import.meta.env.VITE_API_URL+'/item/?id='+id)
+                .then((res) => {
+                    item = res.data
+                }).catch(doCatch)
+            return item
         },
         async getInfo() {
             let info

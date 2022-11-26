@@ -43,12 +43,8 @@
 import TitleAndBack from '../components/TitleAndBack.vue';
 import Input from '../components/Input.vue';
 import Button from '../components/Button.vue';
-import axios from 'axios';
 import { onMounted, ref } from 'vue';
 import { useUserStore } from '@/stores/userStore.js'
-import Toast from "vue-toastification";
-import "vue-toastification/dist/index.css";
-import { useToast } from "vue-toastification";
 
 var name = ref('')
 var fullphone = ref('')

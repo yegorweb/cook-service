@@ -10,7 +10,7 @@
                     <div class="wa-text">WhatsApp</div>
                 </a>
                 <button class="btn button">Заказать 1 блюдо за 430₽</button>
-                <button class="account button" id="menuButton" @click="menu=!menu">
+                <button :class="{'account button': !menu, 'account button button-active': menu}" id="menuButton" @click="menu=!menu">
                     <img src="@/assets/account.svg" alt="" class="account-img">
                 </button>
             </div>
@@ -46,7 +46,7 @@
                     </router-link>
                     <router-link to="/registration" class="menu-buttons-item" @click="menu=!menu">
                         <img src="@/assets/user-data.svg" alt="" class="menu-buttons-item-img">
-                        <div class="menu-buttons-item-text">Регистрация</div>
+                        <div class="menu-buttons-item-text">Авторизация</div>
                     </router-link>
                     <div class="menu-buttons-item" @click="menu=!menu">
                         <img src="@/assets/logout.svg" alt="" class="menu-buttons-item-img">
@@ -132,6 +132,7 @@ onMounted(() => {
             border-top: 1px solid #FFFFFF;
             position: relative;
             cursor: pointer;
+
             &-img {
                 width: rem(20);
             }
@@ -197,7 +198,8 @@ onMounted(() => {
 
     &:hover {
         box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.08), 1px 1px 6px rgba(255, 255, 255, 0.5), -5px -5px 20px #FFFFFF, -5px -5px 20px #D3D3D3;
-
+    } &-active {
+        box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.08), 1px 1px 6px rgba(255, 255, 255, 0.5), -5px -5px 20px #FFFFFF, -5px -5px 20px #D3D3D3;
     }
 }
 .wa {

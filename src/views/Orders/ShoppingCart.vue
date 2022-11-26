@@ -18,7 +18,7 @@
             </template>
             <div v-else class="no">Отсутсвуют 😱</div>
         </div>
-        <router-link to="/send-order" style="text-decoration: none;"><Button bg="#25D366" color="#FFFFFF" :marginTop="30">Оформить заказ</Button></router-link>
+        <Button v-if="cart.length > 0" @click="router.push({name: 'send-order'})" bg="#25D366" color="#FFFFFF" :marginTop="30">Оформить заказ</Button>
         <CatalogItemPage 
             v-on:closeFullItem="closeFullItem" 
             v-if="currentFullItem.active" 
@@ -36,15 +36,17 @@ import ShoppingCartPersons from '@/components/ShoppingCart/ShoppingCartPersons.v
 import ShoppingCartDelivery from '@/components/ShoppingCart/ShoppingCartDelivery.vue';
 import CatalogItemPage from "@/components/Catalog/CatalogItemPage.vue";
 import { useCartStore } from '../../stores/cartStore';
-import { useItemsStore } from '../../stores/itemsStore';
+import { useInfoStore } from '../../stores/infoStore';
+import { useRouter } from 'vue-router';
 
-var itemsStore = useItemsStore()
+var infoStore = useInfoStore()
 var cartStore = useCartStore()
+const router = useRouter()
 
 // получаем блюда и инфу
 var cartFromStore = cartStore.getCart()
-var items = await itemsStore.getItems()
-var info = await itemsStore.getInfo()
+var items = await infoStore.getItems()
+var info = await infoStore.getInfo()
 
 console.log(items)
 console.log(cartFromStore)

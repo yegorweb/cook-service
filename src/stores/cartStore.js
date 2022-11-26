@@ -5,11 +5,12 @@ import _ from "lodash";
 
 export const useCartStore = defineStore('cartStore', () => {
     var cart = ref(localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [])
+    console.log(cart.value)
     function getCart() {
         return cart.value
     }
     function add(item) {
-        if (cart.value.map(element => _.isEqual(element, item))) {
+        if (cart.value.some(element => _.isEqual(element, item))) {
             showToast('Такое в вашей корзине уже лежит', 'error')
             return
         }
